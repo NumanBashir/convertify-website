@@ -8,7 +8,7 @@ convertify-website/
   studio-convertify/   Sanity Studio CMS
 ```
 
-The frontend uses local fallback content first, then fetches published content from Sanity when the Sanity environment variables are configured.
+The frontend fetches published content from Sanity for the editable website sections.
 
 ## Requirements
 
@@ -98,7 +98,7 @@ The Studio includes these client-editable areas:
 
 ## Seed Starter Content
 
-The frontend fallback content can be copied into Sanity as editable starter documents.
+The starter seed script can copy the original website copy into Sanity as editable documents.
 
 First log in to Sanity:
 
@@ -128,7 +128,7 @@ After seeding, open Studio at `http://localhost:3333`, edit the documents, and p
 1. A client edits and publishes content in `studio-convertify`.
 2. The frontend queries published Sanity documents using `@sanity/client`.
 3. The frontend refreshes CMS content when published Sanity documents change and when the browser tab regains focus.
-4. If Sanity is not configured, unreachable, or has no documents yet, the frontend keeps using the original hardcoded fallback content.
+4. If Sanity is unreachable, CMS-driven sections use empty fallback values instead of the original website copy, making fetch problems obvious.
 5. The quote form logic remains frontend-controlled; only the surrounding copy is editable in Sanity.
 
 ## Validation

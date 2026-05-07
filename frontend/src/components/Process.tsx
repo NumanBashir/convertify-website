@@ -4,7 +4,30 @@
  */
 
 import { motion } from 'motion/react';
-import { PROCESS_STEPS } from '../constants';
+import { ProcessStep } from '../types';
+
+const PROCESS_STEPS: ProcessStep[] = [
+  {
+    number: '01',
+    title: 'Tell us what you need',
+    description: 'Fill out our estimate form. We learn about your business, goals, and specific website needs.',
+  },
+  {
+    number: '02',
+    title: 'Get a recommendation',
+    description: 'We suggest the right website structure, tech stack, and next steps for your situation.',
+  },
+  {
+    number: '03',
+    title: 'Design and build',
+    description: 'Your site is planned, designed, and built with a focus on clarity, trust, and conversion.',
+  },
+  {
+    number: '04',
+    title: 'Review and launch',
+    description: 'You review the final product, we make tweaks, and then prepare for a successful launch.',
+  },
+];
 
 export default function Process() {
   return (

@@ -43,7 +43,7 @@ export default function App() {
           }
         })
         .catch((error) => {
-          console.warn('Unable to load Sanity content. Using local fallback content.', error);
+          console.warn('Unable to load Sanity content. Rendering local fallback content.', error);
         });
     };
 

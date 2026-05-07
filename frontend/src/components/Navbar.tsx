@@ -6,8 +6,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
-import { NAV_LINKS } from '../constants';
-import { SiteSettings } from '../types';
+import { NavLink, SiteSettings } from '../types';
+
+const NAV_LINKS: NavLink[] = [
+  { label: 'Services', href: '#services' },
+  { label: 'Case Studies', href: '#case-studies' },
+  { label: 'Process', href: '#process' },
+  { label: 'About', href: '#about' },
+  { label: 'FAQ', href: '#faq' },
+];
 
 interface NavbarProps {
   siteSettings: SiteSettings;

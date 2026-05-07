@@ -6,8 +6,45 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Check, ArrowRight, Send } from "lucide-react";
-import { QUOTE_QUESTIONS } from "../constants";
-import { QuoteFormSettings } from "../types";
+import { Question, QuoteFormSettings } from "../types";
+
+const QUOTE_QUESTIONS: Question[] = [
+  {
+    id: 'goal',
+    text: 'What do you need help with?',
+    options: ['New website', 'Website redesign', 'Landing page', 'CMS setup', 'Not sure yet'],
+  },
+  {
+    id: 'type',
+    text: 'What type of business do you run?',
+    options: ['Local service', 'Restaurant/Café', 'Shop/Ecommerce', 'Consultant', 'SaaS/Startup', 'Other'],
+  },
+  {
+    id: 'main-goal',
+    text: 'What is the main goal?',
+    options: ['More enquiries', 'Take bookings', 'Look more professional', 'Sell products', 'Clearer services'],
+  },
+  {
+    id: 'pages',
+    text: 'How many pages do you think you need?',
+    options: ['1-page landing', '2–5 pages', '6–10 pages', 'Not sure yet'],
+  },
+  {
+    id: 'features',
+    text: 'Any extra features needed?',
+    options: ['Contact form', 'Booking form', 'CMS/Blog', 'Gallery', 'Ecommerce', 'Not sure yet'],
+  },
+  {
+    id: 'readiness',
+    text: 'Do you have content ready?',
+    options: ['Yes, everything', 'Partly', 'No, I need help'],
+  },
+  {
+    id: 'timeline',
+    text: 'When would you like to start?',
+    options: ['As soon as possible', 'Within 1–2 months', 'Just exploring'],
+  },
+];
 
 interface QuoteFormProps {
   settings: QuoteFormSettings;

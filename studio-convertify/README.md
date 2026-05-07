@@ -72,7 +72,7 @@ After editing content in Studio, click **Publish**. The frontend reads published
 
 ## Frontend Connection
 
-The React frontend fetches published documents from this Sanity dataset using `@sanity/client`. It uses Sanity's live API locally, listens for published content changes, and refetches when the browser tab regains focus. The frontend still has fallback content, so it works locally before content has been published.
+The React frontend fetches published documents from this Sanity dataset using `@sanity/client`. It uses Sanity's live API locally, listens for published content changes, and refetches when the browser tab regains focus.
 
 Make sure the Sanity project allows the frontend local origin in CORS settings:
 
