@@ -1,0 +1,9 @@
+{
+  "name": "Convertify",
+  "short_name": "Convertify",
+  "description": "Professional websites, landing pages, and CMS-powered experiences built for clarity, trust, and more enquiries.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050B1F",
+  "theme_color": "#050B1F"
+}
