@@ -3,16 +3,16 @@
 This project keeps the React frontend and Sanity Studio as separate local apps:
 
 ```text
-client-website/
-  frontend/  React + Vite website
-  studio/    Sanity Studio CMS
+convertify-website/
+  frontend/            React + Vite website
+  studio-convertify/   Sanity Studio CMS
 ```
 
 The frontend uses local fallback content first, then fetches published content from Sanity when the Sanity environment variables are configured.
 
 ## Requirements
 
-- Node.js 20 or newer
+- Node.js 20.19.1 or newer for Sanity Studio v5
 - npm
 - An existing Sanity project ID and dataset
 
@@ -22,27 +22,25 @@ Create these files from the examples:
 
 ```bash
 cp frontend/.env.example frontend/.env.local
-cp studio/.env.example studio/.env.local
+cp studio-convertify/.env.example studio-convertify/.env.local
 ```
 
 Frontend values:
 
-sas
-
 ```bash
-VITE_SANITY_PROJECT_ID=your_project_id
+VITE_SANITY_PROJECT_ID=06lobmo4
 VITE_SANITY_DATASET=production
 VITE_SANITY_API_VERSION=2026-05-07
-VITE_SANITY_STUDIO_TITLE=Client Website Studio
+VITE_SANITY_STUDIO_TITLE=Convertify
 ```
 
 Studio values:
 
 ```bash
-SANITY_STUDIO_PROJECT_ID=your_project_id
+SANITY_STUDIO_PROJECT_ID=06lobmo4
 SANITY_STUDIO_DATASET=production
 SANITY_STUDIO_API_VERSION=2026-05-07
-SANITY_STUDIO_TITLE=Client Website Studio
+SANITY_STUDIO_TITLE=Convertify
 ```
 
 For browser fetching, make sure the Sanity project allows the local frontend origin, usually `http://localhost:3000`, in Sanity CORS settings.
@@ -59,7 +57,7 @@ npm install
 Install studio dependencies:
 
 ```bash
-cd ../studio
+cd ../studio-convertify
 npm install
 ```
 
@@ -77,7 +75,7 @@ The frontend runs at `http://localhost:3000`.
 Run Sanity Studio in another terminal:
 
 ```bash
-cd studio
+cd studio-convertify
 npm run dev
 ```
 
@@ -97,7 +95,7 @@ The Studio includes these client-editable areas:
 
 ## Content Flow
 
-1. A client edits and publishes content in `studio`.
+1. A client edits and publishes content in `studio-convertify`.
 2. The frontend queries published Sanity documents using `@sanity/client`.
 3. If Sanity is not configured, unreachable, or has no documents yet, the frontend keeps using the original hardcoded fallback content.
 4. The quote form logic remains frontend-controlled; only the surrounding copy is editable in Sanity.
@@ -113,6 +111,6 @@ npm run build
 ```
 
 ```bash
-cd studio
+cd studio-convertify
 npm run build
 ```
