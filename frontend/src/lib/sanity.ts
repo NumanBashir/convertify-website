@@ -6,6 +6,8 @@ export const sanityConfig = {
   apiVersion: import.meta.env.VITE_SANITY_API_VERSION || '2026-05-07',
 };
 
+const useCdn = import.meta.env.VITE_SANITY_USE_CDN === 'true';
+
 export const isSanityConfigured = Boolean(
   sanityConfig.projectId && sanityConfig.dataset,
 );
@@ -13,6 +15,6 @@ export const isSanityConfigured = Boolean(
 export const sanityClient = isSanityConfigured
   ? createClient({
       ...sanityConfig,
-      useCdn: true,
+      useCdn,
     })
   : null;

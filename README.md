@@ -32,6 +32,7 @@ VITE_SANITY_PROJECT_ID=06lobmo4
 VITE_SANITY_DATASET=production
 VITE_SANITY_API_VERSION=2026-05-07
 VITE_SANITY_STUDIO_TITLE=Convertify
+VITE_SANITY_USE_CDN=false
 ```
 
 Studio values:
@@ -45,7 +46,7 @@ SANITY_STUDIO_TITLE=Convertify
 
 For browser fetching, make sure the Sanity project allows the local frontend origin, usually `http://localhost:3000`, in Sanity CORS settings.
 
-The frontend has `06lobmo4` and `production` as non-secret fallbacks, so it can fetch from the current Sanity project even before `.env.local` exists.
+The frontend has `06lobmo4` and `production` as non-secret fallbacks, so it can fetch from the current Sanity project even before `.env.local` exists. `VITE_SANITY_USE_CDN=false` keeps local editing responsive by using Sanity's live API instead of the cached CDN.
 
 ## Install
 
@@ -120,14 +121,15 @@ To intentionally reset the seeded documents from local starter content:
 SEED_OVERWRITE=true npm run seed
 ```
 
-After seeding, open Studio at `http://localhost:3333`, edit the documents, and publish them. The frontend will then fetch and display those published values.
+After seeding, open Studio at `http://localhost:3333`, edit the documents, and publish them. The frontend listens for published Sanity changes, refetches on window focus, and displays those published values.
 
 ## Content Flow
 
 1. A client edits and publishes content in `studio-convertify`.
 2. The frontend queries published Sanity documents using `@sanity/client`.
-3. If Sanity is not configured, unreachable, or has no documents yet, the frontend keeps using the original hardcoded fallback content.
-4. The quote form logic remains frontend-controlled; only the surrounding copy is editable in Sanity.
+3. The frontend refreshes CMS content when published Sanity documents change and when the browser tab regains focus.
+4. If Sanity is not configured, unreachable, or has no documents yet, the frontend keeps using the original hardcoded fallback content.
+5. The quote form logic remains frontend-controlled; only the surrounding copy is editable in Sanity.
 
 ## Validation
 

@@ -16,17 +16,63 @@ import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import { fallbackContent, getWebsiteContent } from './lib/content';
+import { sanityClient } from './lib/sanity';
 import { WebsiteContent } from './types';
+
+const contentTypes = [
+  'siteSettings',
+  'homepage',
+  'service',
+  'caseStudy',
+  'testimonial',
+  'faq',
+  'quoteFormSettings',
+];
 
 export default function App() {
   const [content, setContent] = useState<WebsiteContent>(fallbackContent);
 
   useEffect(() => {
-    getWebsiteContent()
-      .then(setContent)
-      .catch((error) => {
-        console.warn('Unable to load Sanity content. Using local fallback content.', error);
+    let isMounted = true;
+
+    const loadContent = () => {
+      getWebsiteContent()
+        .then((nextContent) => {
+          if (isMounted) {
+            setContent(nextContent);
+          }
+        })
+        .catch((error) => {
+          console.warn('Unable to load Sanity content. Using local fallback content.', error);
+        });
+    };
+
+    loadContent();
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        loadContent();
+      }
+    };
+
+    window.addEventListener('focus', loadContent);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    const subscription = sanityClient
+      ?.listen(`*[_type in $types]`, {types: contentTypes}, {includeResult: false})
+      .subscribe({
+        next: loadContent,
+        error: (error) => {
+          console.warn('Unable to listen for Sanity content changes.', error);
+        },
       });
+
+    return () => {
+      isMounted = false;
+      window.removeEventListener('focus', loadContent);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      subscription?.unsubscribe();
+    };
   }, []);
 
   return (
