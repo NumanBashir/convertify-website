@@ -19,7 +19,7 @@ export default function About() {
           >
             <div className="relative z-10 rounded-[40px] overflow-hidden aspect-4/5 bg-brand-gold/10">
               <img
-                src="public/assets/foto.jpg"
+                src="/assets/foto.jpg"
                 alt="Numan Bashir"
                 className="w-full h-full object-cover brightness-90 hover:grayscale-0 transition-all duration-700"
               />
