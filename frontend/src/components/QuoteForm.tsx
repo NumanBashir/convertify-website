@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import { motion, AnimatePresence } from "motion/react";
 import { Check, ArrowRight, Send } from "lucide-react";
 import { Question, QuoteFormSettings } from "../types";
@@ -51,12 +52,15 @@ interface QuoteFormProps {
 }
 
 export default function QuoteForm({ settings }: QuoteFormProps) {
+  const [formspreeState, submitToFormspree] = useForm("mzdoaezy");
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [contactData, setContactData] = useState({
     name: "",
     company: "",
     email: "",
+    phone: "",
+    postalCode: "",
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -70,11 +74,25 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
     }
   };
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const selectedAnswers = QUOTE_QUESTIONS.map((question) => ({
+    question: question.text,
+    answer: answers[question.id] || '',
+  }));
+
+  const answerSummary = selectedAnswers
+    .map((item) => `${item.question}: ${item.answer || 'Not answered'}`)
+    .join('\n');
+
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Quote Request:", { ...answers, ...contactData });
-    setIsSubmitted(true);
+    await submitToFormspree(e);
   };
+
+  React.useEffect(() => {
+    if (formspreeState.succeeded) {
+      setIsSubmitted(true);
+    }
+  }, [formspreeState.succeeded]);
 
   return (
     <section id="quote" className="py-24 bg-brand-depth relative">
@@ -217,16 +235,35 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                           onSubmit={handleContactSubmit}
                           className="space-y-8"
                         >
-                          <div className="grid md:grid-cols-2 gap-8">
+                          <input type="hidden" name="form_name" value="Convertify Quote Request" />
+                          <input type="hidden" name="subject" value="New Convertify quote request" />
+                          <input type="hidden" name="questionnaire_summary" value={answerSummary} />
+                          {selectedAnswers.map((item, index) => (
+                            <React.Fragment key={item.question}>
+                              <input
+                                type="hidden"
+                                name={`question_${index + 1}`}
+                                value={item.question}
+                              />
+                              <input
+                                type="hidden"
+                                name={`answer_${index + 1}`}
+                                value={item.answer}
+                              />
+                            </React.Fragment>
+                          ))}
+                          <div className="grid md:grid-cols-2 gap-6">
                             <div className="space-y-3">
-                              <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
-                                Your Name
+                              <label htmlFor="quote-name" className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
+                                Navn*
                               </label>
                               <input
+                                id="quote-name"
+                                name="name"
                                 required
                                 type="text"
                                 className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-brand-gold transition-all text-white placeholder:text-white/10"
-                                placeholder="Numan Bashir"
+                                placeholder="Dit navn"
                                 value={contactData.name}
                                 onChange={(e) =>
                                   setContactData({
@@ -237,14 +274,36 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                               />
                             </div>
                             <div className="space-y-3">
-                              <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
-                                Email Address
+                              <label htmlFor="quote-company" className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
+                                Firma*
                               </label>
                               <input
+                                id="quote-company"
+                                name="company"
+                                required
+                                type="text"
+                                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-brand-gold transition-all text-white placeholder:text-white/10"
+                                placeholder="Firmanavn"
+                                value={contactData.company}
+                                onChange={(e) =>
+                                  setContactData({
+                                    ...contactData,
+                                    company: e.target.value,
+                                  })
+                                }
+                              />
+                            </div>
+                            <div className="space-y-3">
+                              <label htmlFor="quote-email" className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
+                                E-mail*
+                              </label>
+                              <input
+                                id="quote-email"
+                                name="email"
                                 required
                                 type="email"
                                 className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-brand-gold transition-all text-white placeholder:text-white/10"
-                                placeholder="hello@convertify.com"
+                                placeholder="din@email.dk"
                                 value={contactData.email}
                                 onChange={(e) =>
                                   setContactData({
@@ -253,16 +312,65 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                                   })
                                 }
                               />
+                              <ValidationError
+                                prefix="Email"
+                                field="email"
+                                errors={formspreeState.errors}
+                                className="text-sm font-bold text-red-300"
+                              />
+                            </div>
+                            <div className="space-y-3">
+                              <label htmlFor="quote-phone" className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
+                                Telefon*
+                              </label>
+                              <input
+                                id="quote-phone"
+                                name="phone"
+                                required
+                                type="tel"
+                                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-brand-gold transition-all text-white placeholder:text-white/10"
+                                placeholder="+45 12 34 56 78"
+                                value={contactData.phone}
+                                onChange={(e) =>
+                                  setContactData({
+                                    ...contactData,
+                                    phone: e.target.value,
+                                  })
+                                }
+                              />
+                            </div>
+                            <div className="space-y-3 md:col-span-2">
+                              <label htmlFor="quote-postal-code" className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
+                                Postnummer*
+                              </label>
+                              <input
+                                id="quote-postal-code"
+                                name="postal_code"
+                                required
+                                type="text"
+                                inputMode="numeric"
+                                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-brand-gold transition-all text-white placeholder:text-white/10"
+                                placeholder="0000"
+                                value={contactData.postalCode}
+                                onChange={(e) =>
+                                  setContactData({
+                                    ...contactData,
+                                    postalCode: e.target.value,
+                                  })
+                                }
+                              />
                             </div>
                           </div>
                           <div className="space-y-3">
-                            <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
-                              Short message (Optional)
+                            <label htmlFor="quote-message" className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
+                              Kort besked (valgfri)
                             </label>
                             <textarea
+                              id="quote-message"
+                              name="message"
                               rows={3}
                               className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-brand-gold transition-all text-white placeholder:text-white/10 resize-none"
-                              placeholder="Tell us a bit more about your project..."
+                              placeholder="Fortæl kort om dit projekt..."
                               value={contactData.message}
                               onChange={(e) =>
                                 setContactData({
@@ -271,14 +379,44 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                                 })
                               }
                             ></textarea>
+                            <ValidationError
+                              prefix="Message"
+                              field="message"
+                              errors={formspreeState.errors}
+                              className="text-sm font-bold text-red-300"
+                            />
                           </div>
+
+                          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                            <h4 className="mb-5 text-xl font-bold !text-white">
+                              Du har valgt:
+                            </h4>
+                            <dl className="space-y-4">
+                              {selectedAnswers.map((item) => (
+                                <div key={item.question} className="grid gap-1 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-6">
+                                  <dt className="text-sm font-bold text-brand-beige/50">
+                                    {item.question}:
+                                  </dt>
+                                  <dd className="text-sm font-bold text-brand-gold">
+                                    {item.answer || 'Ikke besvaret'}
+                                  </dd>
+                                </div>
+                              ))}
+                            </dl>
+                          </div>
+
+                          <ValidationError
+                            errors={formspreeState.errors}
+                            className="text-sm font-bold text-red-300"
+                          />
 
                           <div className="pt-6 flex flex-col md:flex-row items-center gap-10">
                             <button
                               type="submit"
-                              className="btn-primary flex items-center justify-center gap-3 min-w-[240px]"
+                              disabled={formspreeState.submitting}
+                              className="btn-primary flex items-center justify-center gap-3 min-w-[240px] disabled:opacity-50 disabled:pointer-events-none"
                             >
-                              Get my free estimate
+                              {formspreeState.submitting ? 'Sender...' : 'Få Dit Estimat Nu'}
                               <Send size={18} />
                             </button>
                             <button
