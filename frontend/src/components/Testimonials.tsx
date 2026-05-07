@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion } from 'motion/react';
-import { Quote } from 'lucide-react';
-import { Testimonial } from '../types';
+import { motion } from "motion/react";
+import { Quote } from "lucide-react";
+import { Testimonial } from "../types";
 
 interface TestimonialsProps {
   testimonials: Testimonial[];
@@ -17,7 +17,8 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-            Trusted by <span className="text-brand-gold">growing businesses</span>.
+            Trusted by{" "}
+            <span className="text-brand-gold">growing businesses</span>
           </h2>
         </div>
 
@@ -33,12 +34,12 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
               <div className="absolute top-10 left-10 text-brand-gold/20">
                 <Quote size={60} />
               </div>
-              
+
               <div className="space-y-8 relative z-10">
                 <p className="text-2xl md:text-3xl font-medium leading-relaxed font-display italic">
                   "{t.quote}"
                 </p>
-                
+
                 <div className="flex flex-col items-center">
                   {t.clientImage ? (
                     <img
@@ -51,9 +52,11 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
                       {t.clientName.charAt(0)}
                     </div>
                   )}
-                  <p className="text-lg font-bold text-brand-white">{t.clientName}</p>
+                  <p className="text-lg font-bold text-brand-white">
+                    {t.clientName}
+                  </p>
                   <p className="text-sm font-medium text-brand-beige/50">
-                    {[t.clientRole, t.companyName].filter(Boolean).join(', ')}
+                    {[t.clientRole, t.companyName].filter(Boolean).join(", ")}
                   </p>
                 </div>
               </div>
