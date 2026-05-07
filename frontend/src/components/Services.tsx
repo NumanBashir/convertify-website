@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion } from 'motion/react';
-import * as Icons from 'lucide-react';
-import { ComponentType } from 'react';
-import { Service } from '../types';
+import { motion } from "motion/react";
+import * as Icons from "lucide-react";
+import { ComponentType } from "react";
+import { Service } from "../types";
 
 interface ServicesProps {
   services: Service[];
@@ -14,7 +14,10 @@ interface ServicesProps {
 
 export default function Services({ services }: ServicesProps) {
   return (
-    <section id="services" className="py-24 bg-brand-navy relative overflow-hidden">
+    <section
+      id="services"
+      className="py-24 bg-brand-navy relative overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.div
@@ -23,11 +26,13 @@ export default function Services({ services }: ServicesProps) {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-              Everything your business needs to <span className="text-brand-gold">look professional</span>.
+              Everything your business needs to{" "}
+              <span className="text-brand-gold">look professional</span>
             </h2>
             <p className="text-lg text-brand-beige/60">
-              We lead with business outcomes first. Our goal is to create a website that actually helps you grow, 
-              connecting you with your customers through clear messaging and modern design.
+              We lead with business outcomes first. Our goal is to create a
+              website that actually helps you grow, connecting you with your
+              customers through clear messaging and modern design.
             </p>
           </motion.div>
         </div>
@@ -35,8 +40,12 @@ export default function Services({ services }: ServicesProps) {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, idx) => {
             const Icon =
-              (Icons as unknown as Record<string, ComponentType<{ size?: number }>>)[service.icon] ||
-              Icons.HelpCircle;
+              (
+                Icons as unknown as Record<
+                  string,
+                  ComponentType<{ size?: number }>
+                >
+              )[service.icon] || Icons.HelpCircle;
             return (
               <motion.div
                 key={service.id}
