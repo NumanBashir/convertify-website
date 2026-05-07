@@ -17,11 +17,11 @@ export default function About() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="relative z-10 rounded-[40px] overflow-hidden aspect-[4/5] bg-brand-gold/10">
+            <div className="relative z-10 rounded-[40px] overflow-hidden aspect-4/5 bg-brand-gold/10">
               <img
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop"
+                src="public/assets/foto.jpg"
                 alt="Numan Bashir"
-                className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover brightness-90 hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-linear-to-t from-brand-navy via-transparent to-transparent opacity-60" />
             </div>
@@ -63,7 +63,7 @@ export default function About() {
             <div>
               <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight">
                 A website partner who understands{" "}
-                <span className="text-brand-gold">design and development</span>.
+                <span className="text-brand-gold">design and development</span>
               </h2>
               <div className="space-y-6 text-lg text-brand-beige/70 leading-relaxed">
                 <p>
