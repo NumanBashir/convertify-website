@@ -30,6 +30,12 @@ export const service = defineType({
       options: {hotspot: true},
     }),
     defineField({
+      name: 'externalImageUrl',
+      title: 'External Image URL',
+      description: 'Optional starter image URL. Uploading an image above is preferred for final content.',
+      type: 'url',
+    }),
+    defineField({
       name: 'displayOrder',
       title: 'Display Order',
       type: 'number',

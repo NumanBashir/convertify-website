@@ -47,6 +47,12 @@ export const caseStudy = defineType({
       options: {hotspot: true},
     }),
     defineField({
+      name: 'externalImageUrl',
+      title: 'External Image URL',
+      description: 'Optional starter image URL. Uploading an image above is preferred for final content.',
+      type: 'url',
+    }),
+    defineField({
       name: 'toolsUsed',
       title: 'Tools Used',
       type: 'array',

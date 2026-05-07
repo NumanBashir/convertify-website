@@ -28,6 +28,7 @@ interface SanityWebsiteContent {
     title?: string;
     shortDescription?: string;
     icon?: string;
+    externalImageUrl?: string;
     image?: SanityImage;
   }>;
   caseStudies?: Array<{
@@ -38,6 +39,7 @@ interface SanityWebsiteContent {
     problem?: string;
     solution?: string;
     outcome?: string;
+    externalImageUrl?: string;
     image?: SanityImage;
     toolsUsed?: string[];
   }>;
@@ -92,6 +94,7 @@ const websiteContentQuery = `{
     title,
     shortDescription,
     icon,
+    externalImageUrl,
     image{asset->{url}}
   },
   "caseStudies": *[_type == "caseStudy"] | order(displayOrder asc, title asc){
@@ -102,6 +105,7 @@ const websiteContentQuery = `{
     problem,
     solution,
     outcome,
+    externalImageUrl,
     image{asset->{url}},
     toolsUsed
   },
@@ -164,7 +168,7 @@ export async function getWebsiteContent(): Promise<WebsiteContent> {
           title: service.title || 'Untitled service',
           description: service.shortDescription || '',
           icon: service.icon || 'HelpCircle',
-          image: service.image?.asset?.url,
+          image: service.image?.asset?.url || service.externalImageUrl,
         }))
       : fallbackContent.services,
     caseStudies: data.caseStudies?.length
@@ -176,7 +180,7 @@ export async function getWebsiteContent(): Promise<WebsiteContent> {
           problem: study.problem,
           solution: study.solution,
           outcome: study.outcome || '',
-          image: study.image?.asset?.url || fallbackContent.caseStudies[0].image,
+          image: study.image?.asset?.url || study.externalImageUrl || fallbackContent.caseStudies[0].image,
           toolsUsed: study.toolsUsed,
         }))
       : fallbackContent.caseStudies,

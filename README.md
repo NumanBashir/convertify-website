@@ -45,6 +45,8 @@ SANITY_STUDIO_TITLE=Convertify
 
 For browser fetching, make sure the Sanity project allows the local frontend origin, usually `http://localhost:3000`, in Sanity CORS settings.
 
+The frontend has `06lobmo4` and `production` as non-secret fallbacks, so it can fetch from the current Sanity project even before `.env.local` exists.
+
 ## Install
 
 Install frontend dependencies:
@@ -92,6 +94,33 @@ The Studio includes these client-editable areas:
 - Testimonials: quote, client details, client image or logo, display order
 - FAQs: question, answer, display order
 - Quote Form Settings: surrounding form copy, success message, trust text
+
+## Seed Starter Content
+
+The frontend fallback content can be copied into Sanity as editable starter documents.
+
+First log in to Sanity:
+
+```bash
+cd studio-convertify
+npx sanity login
+```
+
+Then seed the current starter content:
+
+```bash
+npm run seed
+```
+
+The seed command creates missing documents only. It will not overwrite client edits by default.
+
+To intentionally reset the seeded documents from local starter content:
+
+```bash
+SEED_OVERWRITE=true npm run seed
+```
+
+After seeding, open Studio at `http://localhost:3333`, edit the documents, and publish them. The frontend will then fetch and display those published values.
 
 ## Content Flow
 

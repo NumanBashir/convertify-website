@@ -44,6 +44,30 @@ The Studio includes:
 - FAQs: question, answer, display order
 - Quote Form Settings: form headline, supporting text, success message, trust text
 
+## Seed Starter Content
+
+The frontend fallback copy can be seeded into Sanity so it becomes editable in Studio.
+
+Log in once:
+
+```bash
+npx sanity login
+```
+
+Create missing starter documents:
+
+```bash
+npm run seed
+```
+
+The seed command does not overwrite existing documents by default.
+
+To intentionally replace seeded documents:
+
+```bash
+SEED_OVERWRITE=true npm run seed
+```
+
 ## Frontend Connection
 
 The React frontend fetches published documents from this Sanity dataset using `@sanity/client`. The frontend still has fallback content, so it works locally before content has been published.
