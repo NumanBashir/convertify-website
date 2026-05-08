@@ -116,13 +116,11 @@ export default function Hero({ homepage }: HeroProps) {
                     <div className="w-6 h-6 rounded-full border border-white/20" />
                   </div>
                 </div>
-                <div className="">
+                <a href="#quote" className="text-white cursor-pointer">
                   <button className="w-full mt-10 bg-white/5 border border-white/10 py-4 rounded-lg text-white font-black hover:border-brand-gold hover:bg-brand-gold/20 transition-all uppercase tracking-[0.2em] text-[10px] cursor-pointer">
-                    <a href="#quote" className="text-white cursor-pointer">
-                      Next Question
-                    </a>
+                    Next Question
                   </button>
-                </div>
+                </a>
 
                 <div className="mt-8 flex items-center justify-center space-x-2 opacity-30 text-[10px] uppercase font-bold tracking-widest">
                   <CheckCircle2 size={12} className="text-brand-gold" />
