@@ -82,52 +82,51 @@ export default function Hero({ homepage }: HeroProps) {
               <div className="absolute inset-0 bg-linear-to-t from-brand-navy/60 via-transparent to-transparent" />
             </div>
           ) : (
-            <div className="w-full max-w-[440px] bg-[#0D1631] rounded-2xl border border-white/10 p-10 shadow-[0_0_50px_-12px_rgba(197,160,89,0.3)] relative group">
-              <div className="absolute -inset-0.5 bg-linear-to-r from-brand-gold to-blue-500 opacity-20 blur rounded-2xl" />
-              <div className="relative">
-                <div className="flex justify-between items-center mb-10">
-                  <h3 className="text-2xl font-bold !text-white">
-                    Start Your Estimate
-                  </h3>
-                  <span className="text-brand-gold text-sm font-mono font-bold tracking-widest">
-                    Step 01/07
-                  </span>
-                </div>
-
-                <p className="text-[11px] text-white/40 mb-8 font-black uppercase tracking-[0.2em]">
-                  What do you need help with?
-                </p>
-
-                <div className="grid grid-cols-1 gap-4">
-                  <div className="p-5 rounded-xl border border-white/10 bg-white/5 flex items-center justify-between cursor-pointer group hover:border-brand-gold hover:bg-brand-gold/10 transition-all duration-300">
-                    <span className="font-bold">New Website Build</span>
-                    <div className="w-6 h-6 rounded-full border border-white/20 group-hover:border-brand-gold" />
+            <a href="#quote">
+              <div className="w-full max-w-[440px] bg-[#0D1631] rounded-2xl border border-white/10 p-10 shadow-[0_0_50px_-12px_rgba(197,160,89,0.3)] relative group">
+                <div className="absolute -inset-0.5 bg-linear-to-r from-brand-gold to-blue-500 opacity-20 blur rounded-2xl" />
+                <div className="relative">
+                  <div className="flex justify-between items-center mb-10">
+                    <h3 className="text-2xl font-bold !text-white">
+                      Tell us more about your project
+                    </h3>
                   </div>
-                  <div className="p-5 rounded-xl border border-brand-gold bg-brand-gold/10 flex items-center justify-between cursor-pointer">
-                    <span className="font-bold text-brand-gold">
-                      Website Redesign
-                    </span>
-                    <div className="w-6 h-6 rounded-full border-2 border-brand-gold flex items-center justify-center">
-                      <div className="w-2.5 h-2.5 bg-brand-gold rounded-full" />
+
+                  <p className="text-[11px] text-white/40 mb-8 font-black uppercase tracking-[0.2em]">
+                    What do you need help with?
+                  </p>
+
+                  <div className="grid grid-cols-1 gap-4">
+                    <div className="p-5 rounded-xl border border-white/10 bg-white/5 flex items-center justify-between cursor-pointer group hover:border-brand-gold hover:bg-brand-gold/10 transition-all duration-300">
+                      <span className="font-bold">New Website Build</span>
+                      <div className="w-6 h-6 rounded-full border border-white/20 group-hover:border-brand-gold" />
+                    </div>
+                    <div className="p-5 rounded-xl border border-brand-gold bg-brand-gold/10 flex items-center justify-between cursor-pointer">
+                      <span className="font-bold text-brand-gold">
+                        Website Redesign
+                      </span>
+                      <div className="w-6 h-6 rounded-full border-2 border-brand-gold flex items-center justify-center">
+                        <div className="w-2.5 h-2.5 bg-brand-gold rounded-full" />
+                      </div>
+                    </div>
+                    <div className="p-5 rounded-xl border border-white/10 bg-white/5 flex items-center justify-between cursor-pointer hover:border-brand-gold hover:bg-brand-gold/10">
+                      <span className="font-bold">Landing Page</span>
+                      <div className="w-6 h-6 rounded-full border border-white/20" />
                     </div>
                   </div>
-                  <div className="p-5 rounded-xl border border-white/10 bg-white/5 flex items-center justify-between cursor-pointer hover:border-brand-gold hover:bg-brand-gold/10">
-                    <span className="font-bold">Landing Page</span>
-                    <div className="w-6 h-6 rounded-full border border-white/20" />
+                  <a href="#quote" className="text-white cursor-pointer">
+                    <button className="w-full mt-10 bg-white/5 border border-white/10 py-4 rounded-lg text-white font-black hover:border-brand-gold hover:bg-brand-gold/20 transition-all uppercase tracking-[0.2em] text-[10px] cursor-pointer">
+                      Next Question
+                    </button>
+                  </a>
+
+                  <div className="mt-8 flex items-center justify-center space-x-2 opacity-30 text-[10px] uppercase font-bold tracking-widest">
+                    <CheckCircle2 size={12} className="text-brand-gold" />
+                    <span>Takes less than 2 minutes</span>
                   </div>
                 </div>
-                <a href="#quote" className="text-white cursor-pointer">
-                  <button className="w-full mt-10 bg-white/5 border border-white/10 py-4 rounded-lg text-white font-black hover:border-brand-gold hover:bg-brand-gold/20 transition-all uppercase tracking-[0.2em] text-[10px] cursor-pointer">
-                    Next Question
-                  </button>
-                </a>
-
-                <div className="mt-8 flex items-center justify-center space-x-2 opacity-30 text-[10px] uppercase font-bold tracking-widest">
-                  <CheckCircle2 size={12} className="text-brand-gold" />
-                  <span>Takes less than 2 minutes</span>
-                </div>
               </div>
-            </div>
+            </a>
           )}
         </motion.div>
       </div>

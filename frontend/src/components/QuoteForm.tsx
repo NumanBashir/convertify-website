@@ -8,6 +8,7 @@ import { useForm, ValidationError } from "@formspree/react";
 import { motion, AnimatePresence } from "motion/react";
 import { Check, ArrowRight, Send } from "lucide-react";
 import { Question, QuoteFormSettings } from "../types";
+import { code } from "motion/react-client";
 
 type QuoteAnswer = string | string[];
 type QuoteQuestion = Question & {
@@ -87,6 +88,27 @@ const QUOTE_QUESTIONS: QuoteQuestion[] = [
   },
 ];
 
+const PHONE_COUNTRIES = [
+  { code: "+45", flag: "🇩🇰", label: "Denmark" },
+  { code: "+47", flag: "🇳🇴", label: "Norway" },
+  { code: "+46", flag: "🇸🇪", label: "Sweden" },
+  { code: "+49", flag: "🇩🇪", label: "Germany" },
+  { code: "+44", flag: "🇬🇧", label: "United Kingdom" },
+  { code: "+1", flag: "🇺🇸", label: "United States" },
+  { code: "+358", flag: "🇫🇮", label: "Finland" },
+  { code: "+32", flag: "🇧🇪", label: "Belgium" },
+  { code: "+31", flag: "🇳🇱", label: "Netherlands" },
+  { code: "+33", flag: "🇫🇷", label: "France" },
+  { code: "+34", flag: "🇪🇸", label: "Spain" },
+  { code: "+39", flag: "🇮🇹", label: "Italy" },
+  { code: "+41", flag: "🇨🇭", label: "Switzerland" },
+  { code: "+43", flag: "🇦🇹", label: "Austria" },
+  { code: "+971", flag: "🇦🇪", label: "UAE" },
+  { code: "+974", flag: "🇶🇦", label: "Qatar" },
+  { code: "+966", flag: "🇸🇦", label: "Saudi Arabia" },
+  { code: "+61", flag: "🇦🇺", label: "Australia" },
+];
+
 interface QuoteFormProps {
   settings: QuoteFormSettings;
 }
@@ -99,6 +121,7 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
     name: "",
     company: "",
     email: "",
+    countryCode: "+45",
     phone: "",
     postalCode: "",
     message: "",
@@ -167,6 +190,8 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
   const answerSummary = selectedAnswers
     .map((item) => `${item.question}: ${item.answer || "Not answered"}`)
     .join("\n");
+  const fullPhoneNumber =
+    `${contactData.countryCode} ${contactData.phone}`.trim();
 
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -325,6 +350,11 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                             name="questionnaire_summary"
                             value={answerSummary}
                           />
+                          <input
+                            type="hidden"
+                            name="phone"
+                            value={fullPhoneNumber}
+                          />
                           {selectedAnswers.map((item, index) => (
                             <React.Fragment key={item.question}>
                               <input
@@ -417,26 +447,53 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                             </div>
                             <div className="space-y-3">
                               <label
-                                htmlFor="quote-phone"
+                                htmlFor="quote-phone-number"
                                 className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]"
                               >
                                 Telefon*
                               </label>
-                              <input
-                                id="quote-phone"
-                                name="phone"
-                                required
-                                type="tel"
-                                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-brand-gold transition-all text-white placeholder:text-white/10"
-                                placeholder="+45 12 34 56 78"
-                                value={contactData.phone}
-                                onChange={(e) =>
-                                  setContactData({
-                                    ...contactData,
-                                    phone: e.target.value,
-                                  })
-                                }
-                              />
+                              <div className="grid grid-cols-[128px_minmax(0,1fr)] gap-3">
+                                <select
+                                  id="quote-country-code"
+                                  name="country_code"
+                                  required
+                                  className="w-full cursor-pointer appearance-none rounded-xl border border-white/10 bg-white/5 px-4 py-4 text-white outline-none transition-all focus:border-brand-gold"
+                                  value={contactData.countryCode}
+                                  onChange={(e) =>
+                                    setContactData({
+                                      ...contactData,
+                                      countryCode: e.target.value,
+                                    })
+                                  }
+                                  aria-label="Country code"
+                                >
+                                  {PHONE_COUNTRIES.map((country) => (
+                                    <option
+                                      key={`${country.code}-${country.label}`}
+                                      value={country.code}
+                                      className="bg-brand-depth text-white"
+                                    >
+                                      {country.flag} {country.code}
+                                    </option>
+                                  ))}
+                                </select>
+                                <input
+                                  id="quote-phone-number"
+                                  name="phone_number"
+                                  required
+                                  type="tel"
+                                  inputMode="tel"
+                                  className="w-full rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none transition-all placeholder:text-white/10 focus:border-brand-gold"
+                                  placeholder="12 34 56 78"
+                                  value={contactData.phone}
+                                  onChange={(e) =>
+                                    setContactData({
+                                      ...contactData,
+                                      phone: e.target.value,
+                                    })
+                                  }
+                                />
+                              </div>
                             </div>
                           </div>
                           <div className="space-y-3">
