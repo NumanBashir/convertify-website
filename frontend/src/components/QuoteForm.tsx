@@ -9,41 +9,81 @@ import { motion, AnimatePresence } from "motion/react";
 import { Check, ArrowRight, Send } from "lucide-react";
 import { Question, QuoteFormSettings } from "../types";
 
-const QUOTE_QUESTIONS: Question[] = [
+type QuoteAnswer = string | string[];
+type QuoteQuestion = Question & {
+  multiple?: boolean;
+  exclusiveOption?: string;
+};
+
+const QUOTE_QUESTIONS: QuoteQuestion[] = [
   {
-    id: 'goal',
-    text: 'What do you need help with?',
-    options: ['New website', 'Website redesign', 'Landing page', 'CMS setup', 'Not sure yet'],
+    id: "goal",
+    text: "What do you need help with?",
+    options: [
+      "New website",
+      "Website redesign",
+      "Landing page",
+      "CMS setup",
+      "Not sure yet",
+    ],
   },
   {
-    id: 'type',
-    text: 'What type of business do you run?',
-    options: ['Local service', 'Restaurant/Café', 'Shop/Ecommerce', 'Consultant', 'SaaS/Startup', 'Other'],
+    id: "type",
+    text: "What type of business do you run?",
+    options: [
+      "Local service",
+      "Restaurant/Café",
+      "Shop/Ecommerce",
+      "Consultant",
+      "SaaS/Startup",
+      "Other",
+    ],
   },
   {
-    id: 'main-goal',
-    text: 'What is the main goal?',
-    options: ['More enquiries', 'Take bookings', 'Look more professional', 'Sell products', 'Clearer services'],
+    id: "main-goal",
+    text: "What is the main goal?",
+    options: [
+      "More enquiries",
+      "Take bookings",
+      "Look more professional",
+      "Sell products",
+      "Clearer services",
+    ],
   },
   {
-    id: 'pages',
-    text: 'How many pages do you think you need?',
-    options: ['1-page landing', '2–5 pages', '6–10 pages', 'Not sure yet'],
+    id: "pages",
+    text: "How many pages do you think you need?",
+    options: [
+      "1-page landing",
+      "2–5 pages",
+      "6–10 pages",
+      "10+ pages",
+      "Not sure yet",
+    ],
   },
   {
-    id: 'features',
-    text: 'Any extra features needed?',
-    options: ['Contact form', 'Booking form', 'CMS/Blog', 'Gallery', 'Ecommerce', 'Not sure yet'],
+    id: "features",
+    text: "Any extra features needed?",
+    multiple: true,
+    exclusiveOption: "Not sure yet",
+    options: [
+      "Contact form",
+      "Booking form",
+      "CMS/Blog",
+      "Gallery",
+      "Ecommerce",
+      "Not sure yet",
+    ],
   },
   {
-    id: 'readiness',
-    text: 'Do you have content ready?',
-    options: ['Yes, everything', 'Partly', 'No, I need help'],
+    id: "readiness",
+    text: "Do you have content ready?",
+    options: ["Yes, everything", "Partly", "No, I need help"],
   },
   {
-    id: 'timeline',
-    text: 'When would you like to start?',
-    options: ['As soon as possible', 'Within 1–2 months', 'Just exploring'],
+    id: "timeline",
+    text: "When would you like to start?",
+    options: ["As soon as possible", "Within 1–2 months", "Just exploring"],
   },
 ];
 
@@ -54,7 +94,7 @@ interface QuoteFormProps {
 export default function QuoteForm({ settings }: QuoteFormProps) {
   const [formspreeState, submitToFormspree] = useForm("mzdoaezy");
   const [currentStep, setCurrentStep] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [answers, setAnswers] = useState<Record<string, QuoteAnswer>>({});
   const [contactData, setContactData] = useState({
     name: "",
     company: "",
@@ -66,9 +106,54 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const isFinalStep = currentStep === QUOTE_QUESTIONS.length;
+  const currentQuestion = QUOTE_QUESTIONS[currentStep];
 
-  const handleOptionSelect = (questionId: string, option: string) => {
-    setAnswers({ ...answers, [questionId]: option });
+  const formatAnswer = (answer?: QuoteAnswer) =>
+    Array.isArray(answer) ? answer.join(", ") : answer || "";
+
+  const hasAnswer = (question: QuoteQuestion) => {
+    const answer = answers[question.id];
+    return Array.isArray(answer) ? answer.length > 0 : Boolean(answer);
+  };
+
+  const isOptionSelected = (question: QuoteQuestion, option: string) => {
+    const answer = answers[question.id];
+    return Array.isArray(answer) ? answer.includes(option) : answer === option;
+  };
+
+  const handleOptionSelect = (question: QuoteQuestion, option: string) => {
+    if (question.multiple) {
+      setAnswers((currentAnswers) => {
+        const currentAnswer = currentAnswers[question.id];
+        const selectedOptions = Array.isArray(currentAnswer)
+          ? currentAnswer
+          : currentAnswer
+            ? [currentAnswer]
+            : [];
+        const isExclusive = option === question.exclusiveOption;
+        const nextOptions = isExclusive
+          ? [option]
+          : selectedOptions.includes(option)
+            ? selectedOptions.filter(
+                (selectedOption) => selectedOption !== option,
+              )
+            : [
+                ...selectedOptions.filter(
+                  (selectedOption) =>
+                    selectedOption !== question.exclusiveOption,
+                ),
+                option,
+              ];
+
+        return {
+          ...currentAnswers,
+          [question.id]: nextOptions,
+        };
+      });
+      return;
+    }
+
+    setAnswers({ ...answers, [question.id]: option });
     if (currentStep < QUOTE_QUESTIONS.length) {
       setTimeout(() => setCurrentStep(currentStep + 1), 300);
     }
@@ -76,12 +161,12 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
 
   const selectedAnswers = QUOTE_QUESTIONS.map((question) => ({
     question: question.text,
-    answer: answers[question.id] || '',
+    answer: formatAnswer(answers[question.id]),
   }));
 
   const answerSummary = selectedAnswers
-    .map((item) => `${item.question}: ${item.answer || 'Not answered'}`)
-    .join('\n');
+    .map((item) => `${item.question}: ${item.answer || "Not answered"}`)
+    .join("\n");
 
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -101,9 +186,7 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
           <h2 className="text-4xl font-extrabold mb-4">
             {settings.formHeadline}
           </h2>
-          <p className="text-brand-beige/60">
-            {settings.formSupportingText}
-          </p>
+          <p className="text-brand-beige/60">{settings.formSupportingText}</p>
         </div>
 
         <div className="glass-card rounded-[32px] overflow-hidden min-h-[550px] flex flex-col relative group">
@@ -145,52 +228,44 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                         </div>
 
                         <h3 className="text-3xl md:text-4xl font-bold !text-white leading-tight">
-                          {QUOTE_QUESTIONS[currentStep].text}
+                          {currentQuestion.text}
                         </h3>
 
                         <div className="grid md:grid-cols-2 gap-4">
-                          {QUOTE_QUESTIONS[currentStep].options.map(
-                            (option) => (
-                              <button
-                                key={option}
-                                onClick={() =>
-                                  handleOptionSelect(
-                                    QUOTE_QUESTIONS[currentStep].id,
-                                    option,
-                                  )
-                                }
-                                className={`p-6 rounded-xl border transition-all duration-300 group flex items-center justify-between ${
-                                  answers[QUOTE_QUESTIONS[currentStep].id] ===
-                                  option
-                                    ? "border-brand-gold bg-brand-gold/10"
-                                    : "border-white/10 bg-white/5 hover:border-brand-gold/50 hover:bg-brand-gold/10"
+                          {currentQuestion.options.map((option) => (
+                            <button
+                              key={option}
+                              onClick={() =>
+                                handleOptionSelect(currentQuestion, option)
+                              }
+                              className={`p-6 rounded-xl border transition-all duration-300 group flex items-center justify-between ${
+                                isOptionSelected(currentQuestion, option)
+                                  ? "border-brand-gold bg-brand-gold/10"
+                                  : "border-white/10 bg-white/5 hover:border-brand-gold/50 hover:bg-brand-gold/10"
+                              }`}
+                            >
+                              <span
+                                className={`font-bold text-lg transition-colors ${isOptionSelected(currentQuestion, option) ? "text-brand-gold" : "text-brand-beige"}`}
+                              >
+                                {option}
+                              </span>
+                              <div
+                                className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                                  isOptionSelected(currentQuestion, option)
+                                    ? "bg-brand-gold border-brand-gold shadow-[0_0_8px_rgba(197,160,89,0.4)]"
+                                    : "border-white/20 group-hover:border-brand-gold"
                                 }`}
                               >
-                                <span
-                                  className={`font-bold text-lg transition-colors ${answers[QUOTE_QUESTIONS[currentStep].id] === option ? "text-brand-gold" : "text-brand-beige"}`}
-                                >
-                                  {option}
-                                </span>
-                                <div
-                                  className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
-                                    answers[QUOTE_QUESTIONS[currentStep].id] ===
-                                    option
-                                      ? "bg-brand-gold border-brand-gold shadow-[0_0_8px_rgba(197,160,89,0.4)]"
-                                      : "border-white/20 group-hover:border-brand-gold"
-                                  }`}
-                                >
-                                  {answers[QUOTE_QUESTIONS[currentStep].id] ===
-                                    option && (
-                                    <Check
-                                      size={14}
-                                      className="text-brand-navy"
-                                      strokeWidth={4}
-                                    />
-                                  )}
-                                </div>
-                              </button>
-                            ),
-                          )}
+                                {isOptionSelected(currentQuestion, option) && (
+                                  <Check
+                                    size={14}
+                                    className="text-brand-navy"
+                                    strokeWidth={4}
+                                  />
+                                )}
+                              </div>
+                            </button>
+                          ))}
                         </div>
 
                         <div className="flex items-center gap-6 pt-4">
@@ -199,7 +274,7 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                               currentStep < QUOTE_QUESTIONS.length &&
                               setCurrentStep(currentStep + 1)
                             }
-                            disabled={!answers[QUOTE_QUESTIONS[currentStep].id]}
+                            disabled={!hasAnswer(currentQuestion)}
                             className={`btn-primary px-10 py-4 flex items-center gap-3 disabled:opacity-30 disabled:pointer-events-none`}
                           >
                             Next Question
@@ -235,9 +310,21 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                           onSubmit={handleContactSubmit}
                           className="space-y-8"
                         >
-                          <input type="hidden" name="form_name" value="Convertify Quote Request" />
-                          <input type="hidden" name="subject" value="New Convertify quote request" />
-                          <input type="hidden" name="questionnaire_summary" value={answerSummary} />
+                          <input
+                            type="hidden"
+                            name="form_name"
+                            value="Convertify Quote Request"
+                          />
+                          <input
+                            type="hidden"
+                            name="subject"
+                            value="New Convertify quote request"
+                          />
+                          <input
+                            type="hidden"
+                            name="questionnaire_summary"
+                            value={answerSummary}
+                          />
                           {selectedAnswers.map((item, index) => (
                             <React.Fragment key={item.question}>
                               <input
@@ -254,7 +341,10 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                           ))}
                           <div className="grid md:grid-cols-2 gap-6">
                             <div className="space-y-3">
-                              <label htmlFor="quote-name" className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
+                              <label
+                                htmlFor="quote-name"
+                                className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]"
+                              >
                                 Navn*
                               </label>
                               <input
@@ -263,7 +353,7 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                                 required
                                 type="text"
                                 className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-brand-gold transition-all text-white placeholder:text-white/10"
-                                placeholder="Dit navn"
+                                placeholder="Name"
                                 value={contactData.name}
                                 onChange={(e) =>
                                   setContactData({
@@ -274,7 +364,10 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                               />
                             </div>
                             <div className="space-y-3">
-                              <label htmlFor="quote-company" className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
+                              <label
+                                htmlFor="quote-company"
+                                className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]"
+                              >
                                 Firma*
                               </label>
                               <input
@@ -283,7 +376,7 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                                 required
                                 type="text"
                                 className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-brand-gold transition-all text-white placeholder:text-white/10"
-                                placeholder="Firmanavn"
+                                placeholder="Company Name"
                                 value={contactData.company}
                                 onChange={(e) =>
                                   setContactData({
@@ -294,7 +387,10 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                               />
                             </div>
                             <div className="space-y-3">
-                              <label htmlFor="quote-email" className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
+                              <label
+                                htmlFor="quote-email"
+                                className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]"
+                              >
                                 E-mail*
                               </label>
                               <input
@@ -303,7 +399,7 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                                 required
                                 type="email"
                                 className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-brand-gold transition-all text-white placeholder:text-white/10"
-                                placeholder="din@email.dk"
+                                placeholder="your@mail.com"
                                 value={contactData.email}
                                 onChange={(e) =>
                                   setContactData({
@@ -320,7 +416,10 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                               />
                             </div>
                             <div className="space-y-3">
-                              <label htmlFor="quote-phone" className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
+                              <label
+                                htmlFor="quote-phone"
+                                className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]"
+                              >
                                 Telefon*
                               </label>
                               <input
@@ -339,30 +438,12 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                                 }
                               />
                             </div>
-                            <div className="space-y-3 md:col-span-2">
-                              <label htmlFor="quote-postal-code" className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
-                                Postnummer*
-                              </label>
-                              <input
-                                id="quote-postal-code"
-                                name="postal_code"
-                                required
-                                type="text"
-                                inputMode="numeric"
-                                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-brand-gold transition-all text-white placeholder:text-white/10"
-                                placeholder="0000"
-                                value={contactData.postalCode}
-                                onChange={(e) =>
-                                  setContactData({
-                                    ...contactData,
-                                    postalCode: e.target.value,
-                                  })
-                                }
-                              />
-                            </div>
                           </div>
                           <div className="space-y-3">
-                            <label htmlFor="quote-message" className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
+                            <label
+                              htmlFor="quote-message"
+                              className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]"
+                            >
                               Kort besked (valgfri)
                             </label>
                             <textarea
@@ -370,7 +451,7 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                               name="message"
                               rows={3}
                               className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-brand-gold transition-all text-white placeholder:text-white/10 resize-none"
-                              placeholder="Fortæl kort om dit projekt..."
+                              placeholder="Tell us about your project..."
                               value={contactData.message}
                               onChange={(e) =>
                                 setContactData({
@@ -389,16 +470,19 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
 
                           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
                             <h4 className="mb-5 text-xl font-bold !text-white">
-                              Du har valgt:
+                              You have chosen:
                             </h4>
                             <dl className="space-y-4">
                               {selectedAnswers.map((item) => (
-                                <div key={item.question} className="grid gap-1 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-6">
+                                <div
+                                  key={item.question}
+                                  className="grid gap-1 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-6"
+                                >
                                   <dt className="text-sm font-bold text-brand-beige/50">
                                     {item.question}:
                                   </dt>
                                   <dd className="text-sm font-bold text-brand-gold">
-                                    {item.answer || 'Ikke besvaret'}
+                                    {item.answer || "Not answered"}
                                   </dd>
                                 </div>
                               ))}
@@ -416,7 +500,9 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                               disabled={formspreeState.submitting}
                               className="btn-primary flex items-center justify-center gap-3 min-w-[240px] disabled:opacity-50 disabled:pointer-events-none"
                             >
-                              {formspreeState.submitting ? 'Sender...' : 'Få Dit Estimat Nu'}
+                              {formspreeState.submitting
+                                ? "Sending..."
+                                : "Send Request"}
                               <Send size={18} />
                             </button>
                             <button
@@ -448,8 +534,7 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                       Estimate request sent!
                     </h3>
                     <p className="text-xl text-white/60 max-w-sm mx-auto leading-relaxed">
-                      Thanks for the details, {contactData.name.split(" ")[0]}!
-                      {' '}
+                      Thanks for the details, {contactData.name.split(" ")[0]}!{" "}
                       {settings.successMessage}
                     </p>
                     <button
