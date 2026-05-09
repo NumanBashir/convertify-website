@@ -1,0 +1,9 @@
+- Clean up build --> too slow on production
+- Revise the process step, we use an iterative approach (1. discovery, 2. draft landing page, 3. feedback, 4. redesign & cms, 5. delivery, 6. support & maintainance)
+    - This will be done in a loop until we reach finish line
+- Favicon
+- Add tech stack and tools section (Wordpress, Sanity, other client friendly tools)
+
+In future
+- Transfer Vite project to Next.js (better SEO and overall better for web)
+- Adskil production dataset og development dataset (clinet only works on production then I can work on development)
