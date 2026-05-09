@@ -8,7 +8,6 @@ import { useForm, ValidationError } from "@formspree/react";
 import { motion, AnimatePresence } from "motion/react";
 import { Check, ArrowRight, Send } from "lucide-react";
 import { Question, QuoteFormSettings } from "../types";
-import { code } from "motion/react-client";
 
 type QuoteAnswer = string | string[];
 type QuoteQuestion = Question & {

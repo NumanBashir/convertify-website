@@ -4,13 +4,31 @@
  */
 
 import { motion } from "motion/react";
-import * as Icons from "lucide-react";
-import { ComponentType } from "react";
+import {
+  ClipboardCheck,
+  Database,
+  HelpCircle,
+  Layout,
+  Monitor,
+  RefreshCw,
+  Zap,
+} from "lucide-react";
+import type { ComponentType } from "react";
 import { Service } from "../types";
 
 interface ServicesProps {
   services: Service[];
 }
+
+const serviceIcons: Record<string, ComponentType<{ size?: number }>> = {
+  ClipboardCheck,
+  Database,
+  HelpCircle,
+  Layout,
+  Monitor,
+  RefreshCw,
+  Zap,
+};
 
 export default function Services({ services }: ServicesProps) {
   return (
@@ -39,13 +57,7 @@ export default function Services({ services }: ServicesProps) {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, idx) => {
-            const Icon =
-              (
-                Icons as unknown as Record<
-                  string,
-                  ComponentType<{ size?: number }>
-                >
-              )[service.icon] || Icons.HelpCircle;
+            const Icon = serviceIcons[service.icon] || HelpCircle;
             return (
               <motion.div
                 key={service.id}
