@@ -65,7 +65,8 @@ export default function FAQ({ faqs, siteSettings }: FAQProps) {
             Common <span className="text-brand-gold">questions</span>
           </h2>
           <p className="text-brand-beige/60">
-            Everything you need to know before we get started.
+            Answers about websites, setup, tracking, support, and what
+            businesses usually need first.
           </p>
         </div>
 

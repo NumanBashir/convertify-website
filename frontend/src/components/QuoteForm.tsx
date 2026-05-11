@@ -18,12 +18,12 @@ type QuoteQuestion = Question & {
 const QUOTE_QUESTIONS: QuoteQuestion[] = [
   {
     id: "goal",
-    text: "What do you need help with?",
+    text: "What should your digital presence help with?",
     options: [
-      "New website",
-      "Website redesign",
-      "Landing page",
-      "CMS setup",
+      "More enquiries",
+      "Look more professional",
+      "Clearer services",
+      "Better setup and tracking",
       "Not sure yet",
     ],
   },
@@ -41,7 +41,7 @@ const QUOTE_QUESTIONS: QuoteQuestion[] = [
   },
   {
     id: "main-goal",
-    text: "What is the main goal?",
+    text: "What is the main business goal?",
     options: [
       "More enquiries",
       "Take bookings",
@@ -52,7 +52,7 @@ const QUOTE_QUESTIONS: QuoteQuestion[] = [
   },
   {
     id: "pages",
-    text: "How many pages do you think you need?",
+    text: "How big is your current or planned website?",
     options: [
       "1-page landing",
       "2–5 pages",
@@ -63,22 +63,22 @@ const QUOTE_QUESTIONS: QuoteQuestion[] = [
   },
   {
     id: "features",
-    text: "Any extra features needed?",
+    text: "What setup pieces might you need?",
     multiple: true,
     exclusiveOption: "Not sure yet",
     options: [
       "Contact form",
       "Booking form",
       "CMS/Blog",
-      "Gallery",
-      "Ecommerce",
+      "Analytics/tracking",
+      "SEO basics",
       "Not sure yet",
     ],
   },
   {
     id: "readiness",
-    text: "Do you have content ready?",
-    options: ["Yes, everything", "Partly", "No, I need help"],
+    text: "How ready is your content and branding?",
+    options: ["Mostly ready", "Partly ready", "I need help with it"],
   },
   {
     id: "timeline",
@@ -326,7 +326,7 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                             Final Step
                           </span>
                           <h3 className="text-3xl md:text-4xl font-bold !text-white leading-tight">
-                            Great! Where should we send the estimate?
+                            Where should we send your recommendation?
                           </h3>
                         </div>
 
@@ -337,12 +337,12 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                           <input
                             type="hidden"
                             name="form_name"
-                            value="Convertify Quote Request"
+                            value="Convertify Business Review"
                           />
                           <input
                             type="hidden"
                             name="subject"
-                            value="New Convertify quote request"
+                            value="New Convertify business review request"
                           />
                           <input
                             type="hidden"
@@ -507,7 +507,7 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                               name="message"
                               rows={3}
                               className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-brand-gold transition-all text-white placeholder:text-white/10 resize-none"
-                              placeholder="Tell us about your project..."
+                              placeholder="Tell us what you want to improve..."
                               value={contactData.message}
                               onChange={(e) =>
                                 setContactData({
@@ -558,7 +558,7 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                             >
                               {formspreeState.submitting
                                 ? "Sending..."
-                                : "Send Request"}
+                                : "Send my answers"}
                               <Send size={18} />
                             </button>
                             <button
@@ -587,7 +587,7 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                       />
                     </div>
                     <h3 className="text-4xl font-bold !text-white">
-                      Estimate request sent!
+                      Thanks, we received your answers.
                     </h3>
                     <p className="text-xl text-white/60 max-w-sm mx-auto leading-relaxed">
                       Thanks for the details, {contactData.name.split(" ")[0]}!{" "}
@@ -601,7 +601,7 @@ export default function QuoteForm({ settings }: QuoteFormProps) {
                       }}
                       className="text-brand-gold font-black uppercase tracking-[0.3em] text-xs pt-8 hover:tracking-[0.4em] transition-all"
                     >
-                      Send another request
+                      Send another review
                     </button>
                   </motion.div>
                 )}

@@ -5,13 +5,12 @@
 
 import { motion } from "motion/react";
 import {
-  ClipboardCheck,
-  Database,
+  BarChart3,
   HelpCircle,
-  Layout,
+  LifeBuoy,
   Monitor,
-  RefreshCw,
-  Zap,
+  Search,
+  Smartphone,
 } from "lucide-react";
 import type { ComponentType } from "react";
 import { Service } from "../types";
@@ -21,13 +20,12 @@ interface ServicesProps {
 }
 
 const serviceIcons: Record<string, ComponentType<{ size?: number }>> = {
-  ClipboardCheck,
-  Database,
+  BarChart3,
   HelpCircle,
-  Layout,
+  LifeBuoy,
   Monitor,
-  RefreshCw,
-  Zap,
+  Search,
+  Smartphone,
 };
 
 export default function Services({ services }: ServicesProps) {
@@ -44,13 +42,15 @@ export default function Services({ services }: ServicesProps) {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-              Everything your business needs to{" "}
-              <span className="text-brand-gold">look professional</span>
+              More than a website:{" "}
+              <span className="text-brand-gold">
+                a proper digital foundation
+              </span>
             </h2>
             <p className="text-lg text-brand-beige/60">
-              We lead with business outcomes first. Our goal is to create a
-              website that actually helps you grow, connecting you with your
-              customers through clear messaging and modern design.
+              We handle the practical pieces businesses usually need: clear
+              structure, setup, forms, tracking, speed, mobile experience, and
+              support after launch.
             </p>
           </motion.div>
         </div>

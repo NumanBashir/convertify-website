@@ -33,70 +33,68 @@ const documents = [
       {_key: 'twitter', label: 'Twitter', url: 'https://x.com/'},
       {_key: 'instagram', label: 'Instagram', url: 'https://www.instagram.com/'},
     ],
-    primaryCtaText: 'Get Estimate',
+    primaryCtaText: 'Tell us about your business',
   },
   {
     _id: 'homepage',
     _type: 'homepage',
-    heroHeadline: 'Professional websites built to help your',
-    heroHighlightedText: 'business grow.',
+    heroHeadline: 'Build a digital foundation that helps your business',
+    heroHighlightedText: 'get more enquiries.',
     heroSupportingText:
-      'We design and build modern websites, landing pages, and CMS-powered experiences that look trustworthy and turn visitors into enquiries.',
-    primaryCtaText: 'Get a free estimate',
-    secondaryCtaText: 'View case studies',
-    trustPoints: ['5+ Years Experience', 'Webflow Experts', 'Fast Response'],
+      'Convertify helps you get the essentials in place: website strategy, hosting/setup, SEO basics, analytics, contact forms, speed, mobile optimisation, branding, and ongoing support.',
+    primaryCtaText: 'Tell us about your business',
+    secondaryCtaText: 'Start with a quick review',
+    trustPoints: [
+      'No technical headache',
+      'Built around business goals',
+      'Ready for future marketing',
+    ],
     trustLogos: ['BabyGrow', 'TrainSmart', 'LuxeStudio', 'HealthFirst', 'Vanguard'],
   },
   {
     _id: 'service-new-builds',
     _type: 'service',
-    title: 'New Website Builds',
+    title: 'Website Foundation',
     shortDescription:
-      'For businesses that need a professional website from scratch, built around clear messaging and strong first impressions.',
+      'A clear, professional website structure built to help people understand, trust, and contact your business.',
     icon: 'Monitor',
     displayOrder: 10,
   },
   {
     _id: 'service-redesigns',
     _type: 'service',
-    title: 'Website Redesigns',
+    title: 'Visibility & SEO Basics',
     shortDescription:
-      'For businesses with an outdated or unclear website that needs a stronger, more modern presence.',
-    icon: 'RefreshCw',
+      'The essential setup for search: sensible page structure, metadata, indexing basics, and content that explains what you do.',
+    icon: 'Search',
     displayOrder: 20,
   },
   {
     _id: 'service-cms-setup',
     _type: 'service',
-    title: 'CMS Setup',
+    title: 'Tracking & Lead Setup',
     shortDescription:
-      'Update pages, blogs, and menus yourself through an easy-to-use interface without needing a developer.',
-    icon: 'Database',
+      'Contact forms, analytics, and tracking configured properly so enquiries are captured and you can see what is working.',
+    icon: 'BarChart3',
     displayOrder: 30,
   },
   {
     _id: 'service-webflow',
     _type: 'service',
-    title: 'Webflow Websites',
-    shortDescription: 'Fast, flexible, and visually polished websites that are easy to manage and scale.',
-    icon: 'Zap',
+    title: 'Performance & Mobile Experience',
+    shortDescription:
+      'Fast loading, mobile-friendly pages with a conversion-focused structure that is ready for marketing.',
+    icon: 'Smartphone',
     displayOrder: 40,
   },
   {
     _id: 'service-landing-pages',
     _type: 'service',
-    title: 'Landing Pages',
-    shortDescription: 'Focused pages for campaigns, offers, or ads designed to drive specific actions.',
-    icon: 'Layout',
+    title: 'Ongoing Support',
+    shortDescription:
+      'Practical help after launch, from small updates to technical fixes, so your digital presence keeps working.',
+    icon: 'LifeBuoy',
     displayOrder: 50,
-  },
-  {
-    _id: 'service-forms',
-    _type: 'service',
-    title: 'Booking & Contact Forms',
-    shortDescription: 'Make it easy for visitors to request quotes, book appointments, or enquire.',
-    icon: 'ClipboardCheck',
-    displayOrder: 60,
   },
   {
     _id: 'caseStudy-baby-grow',
@@ -104,8 +102,8 @@ const documents = [
     title: 'Baby Grow',
     category: 'Ecommerce / Shopify',
     shortDescription:
-      'Helping an ecommerce brand create a clearer, more conversion-focused shopping experience.',
-    outcome: 'Improved conversion flow and stronger trust presentation.',
+      'Creating a clearer buying journey with stronger trust signals, cleaner structure, and better enquiry paths.',
+    outcome: 'A more professional customer journey that supports trust and action.',
     externalImageUrl:
       'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=2075&auto=format&fit=crop',
     toolsUsed: ['Shopify', 'CRO', 'UX'],
@@ -117,8 +115,8 @@ const documents = [
     title: 'TrainSmartCoach',
     category: 'SaaS / Custom Platform',
     shortDescription:
-      'Building a modern platform experience for managing football training and athlete workflows.',
-    outcome: 'Advanced custom platform with intuitive dashboard and data management.',
+      'Building a more reliable digital product experience around real user workflows and clearer information.',
+    outcome: 'A clearer platform foundation with easier workflows and better data management.',
     externalImageUrl:
       'https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1972&auto=format&fit=crop',
     toolsUsed: ['React', 'Dashboard', 'Data Management'],
@@ -130,8 +128,9 @@ const documents = [
     title: 'Local Business Concept',
     category: 'Webflow / CMS',
     shortDescription:
-      'A clean, CMS-powered website concept for a local business needing more enquiries and easier updates.',
-    outcome: 'Professional local presence with automated booking and easy content controls.',
+      'A practical digital foundation for a local business that needs to look credible and make enquiries easier.',
+    outcome:
+      'A faster, clearer presence with easier updates, booking paths, and stronger local trust.',
     externalImageUrl:
       'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop',
     toolsUsed: ['Webflow', 'CMS', 'Booking'],
@@ -141,7 +140,7 @@ const documents = [
     _id: 'testimonial-baby-grow',
     _type: 'testimonial',
     quote:
-      'Convertify transformed our Shopify store, boosting our conversion rates beyond our expectations! Their expertise in CRO is unmatched.',
+      'Convertify helped us make the site clearer, easier to trust, and more focused on the actions that matter.',
     clientName: 'Basim Shah',
     clientRole: 'Founder',
     companyName: 'Baby Grow',
@@ -150,17 +149,17 @@ const documents = [
   {
     _id: 'faq-website-cost',
     _type: 'faq',
-    question: 'How much does a website cost?',
+    question: 'What does a digital foundation include?',
     answer:
-      'Every project is different. The best way to get a realistic estimate is to answer a few quick questions in our quote form.',
+      'It usually includes the website structure, core pages, contact forms, basic SEO, hosting/setup guidance, analytics, speed, mobile optimisation, and a plan for ongoing support.',
     displayOrder: 10,
   },
   {
     _id: 'faq-redesign',
     _type: 'faq',
-    question: 'Can you redesign my existing website?',
+    question: 'Can you improve my existing website?',
     answer:
-      'Yes. We can improve the look, structure, messaging, and conversion flow of your current site.',
+      'Yes. We can review what you already have and improve the structure, messaging, performance, mobile experience, tracking, and enquiry paths.',
     displayOrder: 20,
   },
   {
@@ -168,7 +167,7 @@ const documents = [
     _type: 'faq',
     question: 'Can I update the website myself?',
     answer:
-      'Absolutely. We include easy CMS setup so you can manage your content without technical help.',
+      'Yes. When it makes sense, we set up a simple CMS so you can update key content without dealing with code.',
     displayOrder: 30,
   },
   {
@@ -176,35 +175,46 @@ const documents = [
     _type: 'faq',
     question: 'Do you only work with local businesses?',
     answer:
-      'No, we help ecommerce brands, consultants, startups, and service businesses of all sizes.',
+      'No, Convertify is built for businesses, local service providers, consultants, ecommerce brands, and founder-led companies that need a stronger online presence.',
     displayOrder: 40,
   },
   {
     _id: 'faq-need-plan',
     _type: 'faq',
     question: 'Do I need a plan before contacting you?',
-    answer: 'Not at all. Part of our job is to guide you and help you figure out what you actually need.',
+    answer:
+      'No. You can come with a rough idea, an existing website, or just a business goal. We will help you work out what matters first.',
     displayOrder: 50,
   },
   {
     _id: 'quoteFormSettings',
     _type: 'quoteFormSettings',
-    formHeadline: 'Find out what your new website could cost.',
+    formHeadline: 'Tell us about your business',
     formSupportingText:
-      'Answer a few quick questions and we’ll send you a tailored price estimate.',
+      'Answer a few quick questions so we can understand your goals, your current setup, and what kind of digital foundation would help you most.',
     successMessage:
-      "We'll review your project and send your tailored recommendation within 24 hours.",
-    trustText: ['Free & no pressure', 'Tailored recommendation', 'Response in 24h'],
+      "Thanks — we'll review your answers and get back to you with a clear recommendation.",
+    trustText: [
+      'No technical headache',
+      'Clear recommendation',
+      'Friendly, low-pressure next step',
+    ],
   },
 ]
 
 const mutation = overwrite ? 'createOrReplace' : 'createIfNotExists'
+const deprecatedDocumentIds = ['service-forms']
 
 console.log(
   `${overwrite ? 'Replacing' : 'Creating missing'} ${documents.length} starter documents in ${projectId}/${dataset}...`,
 )
 
 const transaction = documents.reduce((tx, document) => tx[mutation](document), client.transaction())
+
+if (overwrite) {
+  deprecatedDocumentIds.forEach((id) => transaction.delete(id))
+}
+
 await transaction.commit()
 
 console.log('Seed complete. Open Sanity Studio and publish/edit the starter content.')

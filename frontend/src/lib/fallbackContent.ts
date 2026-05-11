@@ -10,16 +10,20 @@ export const fallbackContent: WebsiteContent = {
       { label: "Twitter", url: "https://x.com/" },
       { label: "Instagram", url: "https://www.instagram.com/" },
     ],
-    primaryCtaText: "Get Estimate",
+    primaryCtaText: "Tell us about your business",
   },
   homepage: {
-    heroHeadline: "Professional websites built to help your",
-    heroHighlightedText: "business grow.",
+    heroHeadline: "Build a digital foundation that helps your business",
+    heroHighlightedText: "get more enquiries.",
     heroSupportingText:
-      "We design and build modern websites, landing pages, and CMS-powered experiences that look trustworthy and turn visitors into enquiries.",
-    primaryCtaText: "Get a free estimate",
-    secondaryCtaText: "View case studies",
-    trustPoints: ["5+ Years Experience", "Webflow Experts", "Fast Response"],
+      "Convertify helps you get the essentials in place: website strategy, hosting/setup, SEO basics, analytics, contact forms, speed, mobile optimisation, branding, and ongoing support.",
+    primaryCtaText: "Tell us about your business",
+    secondaryCtaText: "Start with a quick review",
+    trustPoints: [
+      "No technical headache",
+      "Built around business goals",
+      "Ready for future marketing",
+    ],
     trustLogos: [
       "BabyGrow",
       "TrainSmart",
@@ -30,46 +34,39 @@ export const fallbackContent: WebsiteContent = {
   },
   services: [
     {
-      id: "new-builds",
-      title: "New Website Builds",
+      id: "website-foundation",
+      title: "Website Foundation",
       description:
-        "For businesses that need a professional website from scratch, built around clear messaging and strong first impressions.",
+        "A clear, professional website structure built to help people understand, trust, and contact your business.",
       icon: "Monitor",
     },
     {
-      id: "redesigns",
-      title: "Website Redesigns",
+      id: "visibility-seo-basics",
+      title: "Visibility & SEO Basics",
       description:
-        "For businesses with an outdated or unclear website that needs a stronger, more modern presence.",
-      icon: "RefreshCw",
+        "The essential setup for search: sensible page structure, metadata, indexing basics, and content that explains what you do.",
+      icon: "Search",
     },
     {
-      id: "cms-setup",
-      title: "CMS Setup",
+      id: "tracking-lead-setup",
+      title: "Tracking & Lead Setup",
       description:
-        "Update pages, blogs, and menus yourself through an easy-to-use interface without needing a developer.",
-      icon: "Database",
+        "Contact forms, analytics, and tracking configured properly so enquiries are captured and you can see what is working.",
+      icon: "BarChart3",
     },
     {
-      id: "webflow",
-      title: "Webflow Websites",
+      id: "performance-mobile",
+      title: "Performance & Mobile Experience",
       description:
-        "Fast, flexible, and visually polished websites that are easy to manage and scale.",
-      icon: "Zap",
+        "Fast loading, mobile-friendly pages with a conversion-focused structure that is ready for marketing.",
+      icon: "Smartphone",
     },
     {
-      id: "landing-pages",
-      title: "Landing Pages",
+      id: "ongoing-support",
+      title: "Ongoing Support",
       description:
-        "Focused pages for campaigns, offers, or ads designed to drive specific actions.",
-      icon: "Layout",
-    },
-    {
-      id: "forms",
-      title: "Booking & Contact Forms",
-      description:
-        "Make it easy for visitors to request quotes, book appointments, or enquire.",
-      icon: "ClipboardCheck",
+        "Practical help after launch, from small updates to technical fixes, so your digital presence keeps working.",
+      icon: "LifeBuoy",
     },
   ],
   caseStudies: [
@@ -78,10 +75,11 @@ export const fallbackContent: WebsiteContent = {
       title: "Baby Grow",
       category: "Ecommerce / Shopify",
       description:
-        "Helping an ecommerce brand create a clearer, more conversion-focused shopping experience.",
+        "Creating a clearer buying journey with stronger trust signals, cleaner structure, and better enquiry paths.",
       image:
         "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=2075&auto=format&fit=crop",
-      outcome: "Improved conversion flow and stronger trust presentation.",
+      outcome:
+        "A more professional customer journey that supports trust and action.",
       toolsUsed: ["Shopify", "CRO", "UX"],
     },
     {
@@ -89,11 +87,11 @@ export const fallbackContent: WebsiteContent = {
       title: "TrainSmartCoach",
       category: "SaaS / Custom Platform",
       description:
-        "Building a modern platform experience for managing football training and athlete workflows.",
+        "Building a more reliable digital product experience around real user workflows and clearer information.",
       image:
         "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1972&auto=format&fit=crop",
       outcome:
-        "Advanced custom platform with intuitive dashboard and data management.",
+        "A clearer platform foundation with easier workflows and better data management.",
       toolsUsed: ["React", "Dashboard", "Data Management"],
     },
     {
@@ -101,11 +99,11 @@ export const fallbackContent: WebsiteContent = {
       title: "Local Business Concept",
       category: "Webflow / CMS",
       description:
-        "A clean, CMS-powered website concept for a local business needing more enquiries and easier updates.",
+        "A practical digital foundation for a local business that needs to look credible and make enquiries easier.",
       image:
         "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
       outcome:
-        "Professional local presence with automated booking and easy content controls.",
+        "A faster, clearer presence with easier updates, booking paths, and stronger local trust.",
       toolsUsed: ["Webflow", "CMS", "Booking"],
     },
   ],
@@ -113,7 +111,7 @@ export const fallbackContent: WebsiteContent = {
     {
       id: "baby-grow",
       quote:
-        "Convertify transformed our Shopify store, boosting our conversion rates beyond our expectations! Their expertise in CRO is unmatched.",
+        "Convertify helped us make the site clearer, easier to trust, and more focused on the actions that matter.",
       clientName: "Basim Shah",
       clientRole: "Founder",
       companyName: "Baby Grow",
@@ -121,37 +119,41 @@ export const fallbackContent: WebsiteContent = {
   ],
   faqs: [
     {
-      question: "How much does a website cost?",
+      question: "What does a digital foundation include?",
       answer:
-        "Every project is different. The best way to get a realistic estimate is to answer a few quick questions in our quote form.",
+        "It usually includes the website structure, core pages, contact forms, basic SEO, hosting/setup guidance, analytics, speed, mobile optimisation, and a plan for ongoing support.",
     },
     {
-      question: "Can you redesign my existing website?",
+      question: "Can you improve my existing website?",
       answer:
-        "Yes. We can improve the look, structure, messaging, and conversion flow of your current site.",
+        "Yes. We can review what you already have and improve the structure, messaging, performance, mobile experience, tracking, and enquiry paths.",
     },
     {
       question: "Can I update the website myself?",
       answer:
-        "Absolutely. We include easy CMS setup so you can manage your content without technical help.",
+        "Yes. When it makes sense, we set up a simple CMS so you can update key content without dealing with code.",
     },
     {
       question: "Do you only work with local businesses?",
       answer:
-        "No, we help ecommerce brands, consultants, startups, and service businesses of all sizes.",
+        "No. Convertify is built for businesses, local service providers, consultants, ecommerce brands, and founder-led companies that need a stronger online presence.",
     },
     {
       question: "Do I need a plan before contacting you?",
       answer:
-        "Not at all. Part of our job is to guide you and help you figure out what you actually need.",
+        "No. You can come with a rough idea, an existing website, or just a business goal. We will help you work out what matters first.",
     },
   ],
   quoteFormSettings: {
-    formHeadline: "Find out what your new website could cost.",
+    formHeadline: "Tell us about your business",
     formSupportingText:
-      "Answer a few quick questions and we'll send you a tailored price estimate.",
+      "Answer a few quick questions so we can understand your goals, your current setup, and what kind of digital foundation would help you most.",
     successMessage:
-      "We'll review your project and send your tailored recommendation within 24 hours.",
-    trustText: ["Free & no pressure", "Tailored recommendation", "Response in 24h"],
+      "Thanks — we'll review your answers and get back to you with a clear recommendation.",
+    trustText: [
+      "No technical headache",
+      "Clear recommendation",
+      "Friendly, low-pressure next step",
+    ],
   },
 };

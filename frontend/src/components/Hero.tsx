@@ -88,39 +88,39 @@ export default function Hero({ homepage }: HeroProps) {
                 <div className="relative">
                   <div className="flex justify-between items-center mb-10">
                     <h3 className="text-2xl font-bold !text-white">
-                      Tell us more about your project
+                      Start with a quick review
                     </h3>
                   </div>
 
                   <p className="text-[11px] text-white/40 mb-8 font-black uppercase tracking-[0.2em]">
-                    What do you need help with?
+                    What should improve first?
                   </p>
 
                   <div className="grid grid-cols-1 gap-4">
                     <div className="p-5 rounded-xl border border-white/10 bg-white/5 flex items-center justify-between cursor-pointer group hover:border-brand-gold hover:bg-brand-gold/10 transition-all duration-300">
-                      <span className="font-bold">New Website Build</span>
+                      <span className="font-bold">More enquiries</span>
                       <div className="w-6 h-6 rounded-full border border-white/20 group-hover:border-brand-gold" />
                     </div>
                     <div className="p-5 rounded-xl border border-brand-gold bg-brand-gold/10 flex items-center justify-between cursor-pointer">
                       <span className="font-bold text-brand-gold">
-                        Website Redesign
+                        Better digital setup
                       </span>
                       <div className="w-6 h-6 rounded-full border-2 border-brand-gold flex items-center justify-center">
                         <div className="w-2.5 h-2.5 bg-brand-gold rounded-full" />
                       </div>
                     </div>
                     <div className="p-5 rounded-xl border border-white/10 bg-white/5 flex items-center justify-between cursor-pointer hover:border-brand-gold hover:bg-brand-gold/10">
-                      <span className="font-bold">Landing Page</span>
+                      <span className="font-bold">Not sure yet</span>
                       <div className="w-6 h-6 rounded-full border border-white/20" />
                     </div>
                   </div>
                   <div className="mt-10 w-full rounded-lg border border-white/10 bg-white/5 py-4 text-center text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all group-hover:border-brand-gold group-hover:bg-brand-gold/20">
-                    Next Question
+                    Tell us about your business
                   </div>
 
                   <div className="mt-8 flex items-center justify-center space-x-2 opacity-30 text-[10px] uppercase font-bold tracking-widest">
                     <CheckCircle2 size={12} className="text-brand-gold" />
-                    <span>Takes less than 2 minutes</span>
+                  <span>Takes less than 2 minutes</span>
                   </div>
                 </div>
               </div>

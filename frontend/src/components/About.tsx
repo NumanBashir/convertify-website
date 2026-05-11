@@ -62,25 +62,25 @@ export default function About() {
           >
             <div>
               <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight">
-                A website partner who understands{" "}
-                <span className="text-brand-gold">design and development</span>
+                An external for growing your{" "}
+                <span className="text-brand-gold">digital presence</span>
               </h2>
               <div className="space-y-6 text-lg text-brand-beige/70 leading-relaxed">
                 <p>
                   Convertify is led by Numan Bashir, a developer with 5+ years
-                  of experience building modern websites, CMS solutions, and
-                  custom web platforms.
+                  of experience building websites, CMS setups, forms, tracking,
+                  and digital systems for businesses.
                 </p>
                 <p>
-                  We combine technical skill with a business-focused approach.
-                  Our goal is not just to build a good-looking website, but to
-                  create a tool that helps you communicate clearly and convert
-                  more visitors into customers.
+                  The goal is not to sell you a bigger project than you need. It
+                  is to help you build a website that actually supports your
+                  business: clear structure, fast loading, mobile-friendly, and
+                  set up so people to convert for you.
                 </p>
                 <p>
-                  We work with local businesses, startups, and ecommerce brands
-                  who want to look professional online without the technical
-                  headache.
+                  We work with founders and teams who want to look more
+                  professional online without carrying the technical headache
+                  themselves.
                 </p>
               </div>
             </div>
@@ -105,7 +105,7 @@ export default function About() {
                 href="#quote"
                 className="btn-primary inline-flex items-center gap-2"
               >
-                Let's discuss your project
+                Tell us about your business
               </a>
             </div>
           </motion.div>

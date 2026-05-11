@@ -18,12 +18,12 @@ export default function CaseStudies({ caseStudies }: CaseStudiesProps) {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="max-w-2xl">
             <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-              Selected work built for{" "}
-              <span className="text-brand-gold">clarity and growth</span>
+              Digital foundations built for{" "}
+              <span className="text-brand-gold">clarity and action</span>
             </h2>
             <p className="text-lg text-brand-beige/60">
-              We help businesses across different industries build professional
-              websites that get results.
+              We help businesses make their online presence easier to
+              understand, easier to trust, and easier to act on.
             </p>
           </div>
           <motion.a
@@ -31,7 +31,7 @@ export default function CaseStudies({ caseStudies }: CaseStudiesProps) {
             whileHover={{ x: 5 }}
             className="flex items-center gap-2 text-brand-gold font-bold group"
           >
-            Start your project today
+            Start with a quick review
             <ArrowUpRight
               size={20}
               className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
@@ -75,7 +75,7 @@ export default function CaseStudies({ caseStudies }: CaseStudiesProps) {
                   {study.description}
                 </p>
                 <div className="pt-2 flex items-center gap-2 text-xs font-bold text-brand-gold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                  View full case study
+                  View the work
                 </div>
               </div>
             </motion.div>

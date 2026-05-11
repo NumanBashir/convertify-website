@@ -99,7 +99,7 @@ Instead of:
 
 ### Primary Audience
 
-Local service businesses and small companies that already have some demand but lose enquiries because their website is unclear, outdated, slow, or untrustworthy.
+Local service businesses and companies that already have some demand but lose enquiries because their website is unclear, outdated, slow, or untrustworthy.
 
 Examples:
 

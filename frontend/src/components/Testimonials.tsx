@@ -17,8 +17,8 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-            Trusted by{" "}
-            <span className="text-brand-gold">growing businesses</span>
+            Practical support for{" "}
+            <span className="text-brand-gold">founder-led businesses</span>
           </h2>
         </div>
 

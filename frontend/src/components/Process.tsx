@@ -9,27 +9,27 @@ import { ProcessStep } from "../types";
 const PROCESS_STEPS: ProcessStep[] = [
   {
     number: "01",
-    title: "Tell us what you need",
+    title: "Tell us where you are now",
     description:
-      "Fill out our estimate form. We learn about your business, goals, and specific website needs.",
+      "Answer a few practical questions about your business, current setup, goals, and what is getting in the way.",
   },
   {
     number: "02",
-    title: "Get a recommendation",
+    title: "Get a clear recommendation",
     description:
-      "We suggest the right website structure, tech stack, and next steps for your situation.",
+      "We explain what would help most first, whether that is structure, SEO basics, forms, tracking, speed, or support.",
   },
   {
     number: "03",
-    title: "Design and build",
+    title: "Build the foundation",
     description:
-      "Your site is planned, designed, and built with a focus on clarity, trust, and conversion.",
+      "Your website and setup are planned around clarity, trust, mobile experience, lead capture, and future marketing.",
   },
   {
     number: "04",
-    title: "Review and launch",
+    title: "Launch and support",
     description:
-      "You review the final product, we make tweaks, and then prepare for a successful launch.",
+      "We handle the technical setup, check the essentials, launch carefully, and stay available for practical next steps.",
   },
 ];
 
@@ -39,12 +39,12 @@ export default function Process() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-            A simple process from{" "}
-            <span className="text-brand-gold">idea to launch</span>
+            A simple path to a{" "}
+            <span className="text-brand-gold">stronger digital foundation</span>
           </h2>
           <p className="text-brand-beige/60 max-w-2xl mx-auto">
-            Working with us feels safe and predictable. We guide you through
-            every step of the journey.
+            You do not need to arrive with a technical plan. We help you work
+            out what matters, then handle the setup clearly and practically.
           </p>
         </div>
 
@@ -84,15 +84,15 @@ export default function Process() {
           <div className="p-8 md:p-12 glass-card rounded-[22px] flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="space-y-4 text-center md:text-left">
               <h4 className="text-2xl font-bold">
-                Ready to see the difference?
+                Want a clearer online setup?
               </h4>
               <p className="text-brand-beige/60">
-                Our process is designed to be clear, guided, and low-risk for
-                your business.
+                Start with a few questions and we will come back with a
+                practical recommendation.
               </p>
             </div>
             <a href="#quote" className="btn-primary whitespace-nowrap">
-              Start step 1 today
+              Tell us about your business
             </a>
           </div>
         </div>
