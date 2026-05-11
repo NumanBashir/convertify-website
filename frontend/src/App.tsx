@@ -22,6 +22,7 @@ const contentTypes = [
 ];
 
 const Services = lazy(() => import('./components/Services'));
+const TechStack = lazy(() => import('./components/TechStack'));
 const QuoteForm = lazy(() => import('./components/QuoteForm'));
 const CaseStudies = lazy(() => import('./components/CaseStudies'));
 const Process = lazy(() => import('./components/Process'));
@@ -119,6 +120,7 @@ export default function App() {
         {showDeferredSections && (
           <Suspense fallback={null}>
             <Services services={content.services} />
+            <TechStack />
             <QuoteForm settings={content.quoteFormSettings} />
             <CaseStudies caseStudies={content.caseStudies} />
             <Process />

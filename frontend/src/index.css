@@ -54,3 +54,38 @@
   @apply px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer;
   @apply border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-navy;
 }
+
+.tech-rail {
+  animation: tech-rail 42s linear infinite;
+}
+
+.tech-rail-reverse {
+  animation: tech-rail-reverse 48s linear infinite;
+}
+
+@keyframes tech-rail {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes tech-rail-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-rail,
+  .tech-rail-reverse {
+    animation: none;
+  }
+}
