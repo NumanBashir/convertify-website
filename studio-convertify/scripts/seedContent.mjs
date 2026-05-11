@@ -38,10 +38,10 @@ const documents = [
   {
     _id: 'homepage',
     _type: 'homepage',
-    heroHeadline: 'Build a digital foundation that helps your business',
-    heroHighlightedText: 'get more enquiries.',
+    heroHeadline: 'Your digital growth partner for a stronger online presence',
+    heroHighlightedText: 'that brings in more enquiries.',
     heroSupportingText:
-      'Convertify helps you get the essentials in place: website strategy, hosting/setup, SEO basics, analytics, contact forms, speed, mobile optimisation, branding, and ongoing support.',
+      'Convertify helps you put the right digital foundations in place: website strategy, hosting/setup, SEO basics, analytics, contact forms, speed, mobile optimisation, branding, and ongoing support.',
     primaryCtaText: 'Tell us about your business',
     secondaryCtaText: 'Start with a quick review',
     trustPoints: [

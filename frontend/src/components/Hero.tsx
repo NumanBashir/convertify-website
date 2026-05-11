@@ -27,7 +27,7 @@ export default function Hero({ homepage }: HeroProps) {
           <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-8">
             Trusted by Growing Businesses Worldwide
           </div>
-          <h1 className="text-6xl lg:text-7xl font-bold text-white mb-8 !leading-[1.1] tracking-tight">
+          <h1 className="text-5xl lg:text-6xl font-bold text-white mb-8 !leading-[1.1] tracking-tight">
             {homepage.heroHeadline}{" "}
             {homepage.heroHighlightedText && (
               <span className="text-brand-gold">
@@ -120,7 +120,7 @@ export default function Hero({ homepage }: HeroProps) {
 
                   <div className="mt-8 flex items-center justify-center space-x-2 opacity-30 text-[10px] uppercase font-bold tracking-widest">
                     <CheckCircle2 size={12} className="text-brand-gold" />
-                  <span>Takes less than 2 minutes</span>
+                    <span>Takes less than 2 minutes</span>
                   </div>
                 </div>
               </div>

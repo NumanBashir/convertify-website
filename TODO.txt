@@ -1,4 +1,4 @@
-- Clean up build --> too slow on production
+- Clean up build --> too slow on production ✅
 - Revise the process step, we use an iterative approach (1. discovery, 2. draft landing page, 3. feedback, 4. redesign & cms, 5. delivery, 6. support & maintainance)
     - This will be done in a loop until we reach finish line
 - Favicon
