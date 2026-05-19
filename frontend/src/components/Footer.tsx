@@ -14,11 +14,12 @@ import {
 import { NavLink, SiteSettings } from "../types";
 
 const NAV_LINKS: NavLink[] = [
-  { label: "Services", href: "#services" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "Process", href: "#process" },
-  { label: "About", href: "#about" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Services", href: "/#services" },
+  { label: "Case Studies", href: "/#case-studies" },
+  { label: "Blog", href: "/#blog" },
+  { label: "Process", href: "/#process" },
+  { label: "About", href: "/#about" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 interface FooterProps {
@@ -128,7 +129,7 @@ export default function Footer({ siteSettings }: FooterProps) {
                 a sensible next step.
               </p>
               <a
-                href="#quote"
+                href="/#quote"
                 className="btn-primary w-full text-center text-xs py-3.5 block"
               >
                 {siteSettings.primaryCtaText}

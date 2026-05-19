@@ -9,11 +9,12 @@ import { Menu, X } from 'lucide-react';
 import { NavLink, SiteSettings } from '../types';
 
 const NAV_LINKS: NavLink[] = [
-  { label: 'Services', href: '#services' },
-  { label: 'Case Studies', href: '#case-studies' },
-  { label: 'Process', href: '#process' },
-  { label: 'About', href: '#about' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Case Studies', href: '/#case-studies' },
+  { label: 'Blog', href: '/#blog' },
+  { label: 'Process', href: '/#process' },
+  { label: 'About', href: '/#about' },
+  { label: 'FAQ', href: '/#faq' },
 ];
 
 interface NavbarProps {
@@ -37,7 +38,7 @@ export default function Navbar({ siteSettings }: NavbarProps) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="flex items-center space-x-2">
+        <a href="/" className="flex items-center space-x-2">
           {siteSettings.logo ? (
             <img src={siteSettings.logo} alt="" className="h-8 w-8 rounded-sm object-cover" />
           ) : (
@@ -61,7 +62,7 @@ export default function Navbar({ siteSettings }: NavbarProps) {
               {link.label}
             </a>
           ))}
-          <a href="#quote" className="btn-outline">
+          <a href="/#quote" className="btn-outline">
             {siteSettings.primaryCtaText}
           </a>
         </div>
@@ -95,7 +96,7 @@ export default function Navbar({ siteSettings }: NavbarProps) {
               </a>
             ))}
             <a
-              href="#quote"
+              href="/#quote"
               onClick={() => setIsOpen(false)}
               className="btn-primary text-center"
             >

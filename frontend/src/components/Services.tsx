@@ -42,15 +42,15 @@ export default function Services({ services }: ServicesProps) {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-              More than a website:{" "}
+              Business website design with{" "}
               <span className="text-brand-gold">
                 a proper digital foundation
               </span>
             </h2>
             <p className="text-lg text-brand-beige/60">
-              We handle the practical pieces businesses usually need: clear
-              structure, setup, forms, tracking, speed, mobile experience, and
-              support after launch.
+              We handle the practical pieces businesses usually need: website
+              strategy, CMS setup, forms, tracking, SEO basics, speed, mobile
+              experience, and support after launch.
             </p>
           </motion.div>
         </div>

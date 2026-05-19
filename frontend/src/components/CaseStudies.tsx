@@ -22,12 +22,12 @@ export default function CaseStudies({ caseStudies }: CaseStudiesProps) {
               <span className="text-brand-gold">clarity and action</span>
             </h2>
             <p className="text-lg text-brand-beige/60">
-              We help businesses make their online presence easier to
-              understand, easier to trust, and easier to act on.
+              We help businesses turn unclear websites into conversion-focused
+              websites that are easier to understand, trust, and act on.
             </p>
           </div>
           <motion.a
-            href="#quote"
+            href="/#quote"
             whileHover={{ x: 5 }}
             className="flex items-center gap-2 text-brand-gold font-bold group"
           >

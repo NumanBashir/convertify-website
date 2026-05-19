@@ -104,7 +104,7 @@ export default function Process() {
                 improvements, delivery, and support.
               </p>
             </div>
-            <a href="#quote" className="btn-primary whitespace-nowrap">
+            <a href="/#quote" className="btn-primary whitespace-nowrap">
               Tell us about your business
             </a>
           </div>

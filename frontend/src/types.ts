@@ -52,6 +52,33 @@ export interface FAQItem {
   answer: string;
 }
 
+export interface BlogSpan {
+  _key?: string;
+  _type?: "span";
+  text: string;
+  marks?: string[];
+}
+
+export interface BlogContentBlock {
+  _key?: string;
+  _type: "block";
+  style?: "normal" | "h2" | "h3" | "blockquote";
+  listItem?: "bullet" | "number";
+  children?: BlogSpan[];
+}
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  image?: string;
+  publishedAt?: string;
+  author: string;
+  readingTime?: string;
+  content: BlogContentBlock[];
+}
+
 export interface Question {
   id: string;
   text: string;
@@ -96,6 +123,7 @@ export interface WebsiteContent {
   homepage: HomepageContent;
   services: Service[];
   caseStudies: CaseStudy[];
+  blogPosts: BlogPost[];
   testimonials: Testimonial[];
   faqs: FAQItem[];
   quoteFormSettings: QuoteFormSettings;

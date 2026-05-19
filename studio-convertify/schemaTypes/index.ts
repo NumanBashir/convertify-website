@@ -1,3 +1,4 @@
+import {blogPost} from './blogPost'
 import {caseStudy} from './caseStudy'
 import {faq} from './faq'
 import {homepage} from './homepage'
@@ -11,6 +12,7 @@ export const schemaTypes = [
   homepage,
   service,
   caseStudy,
+  blogPost,
   testimonial,
   faq,
   quoteFormSettings,

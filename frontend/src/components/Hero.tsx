@@ -41,13 +41,13 @@ export default function Hero({ homepage }: HeroProps) {
 
           <div className="flex flex-col sm:flex-row items-center gap-8 mb-16">
             <a
-              href="#quote"
+              href="/#quote"
               className="btn-primary w-full sm:w-auto text-center"
             >
               {homepage.primaryCtaText}
             </a>
             <a
-              href="#case-studies"
+              href="/#case-studies"
               className="text-white/80 font-bold border-b border-white/20 pb-1 hover:text-white hover:border-brand-gold transition-all"
             >
               {homepage.secondaryCtaText}
@@ -82,7 +82,7 @@ export default function Hero({ homepage }: HeroProps) {
               <div className="absolute inset-0 bg-linear-to-t from-brand-navy/60 via-transparent to-transparent" />
             </div>
           ) : (
-            <a href="#quote">
+            <a href="/#quote">
               <div className="w-full max-w-[440px] bg-[#0D1631] rounded-2xl border border-white/10 p-10 shadow-[0_0_50px_-12px_rgba(197,160,89,0.3)] relative group">
                 <div className="absolute -inset-0.5 bg-linear-to-r from-brand-gold to-blue-500 opacity-20 blur rounded-2xl" />
                 <div className="relative">

@@ -62,20 +62,21 @@ export default function About() {
           >
             <div>
               <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight">
-                An external for growing your{" "}
+                An external digital partner for growing your{" "}
                 <span className="text-brand-gold">digital presence</span>
               </h2>
               <div className="space-y-6 text-lg text-brand-beige/70 leading-relaxed">
                 <p>
                   Convertify is led by Numan Bashir, a developer with 5+ years
-                  of experience building websites, CMS setups, forms, tracking,
-                  and digital systems for businesses.
+                  of experience in business website design, CMS setup, contact
+                  forms, tracking, and digital systems for businesses.
                 </p>
                 <p>
                   The goal is not to sell you a bigger project than you need. It
-                  is to help you build a website that actually supports your
-                  business: clear structure, fast loading, mobile-friendly, and
-                  set up so people to convert for you.
+                  is to help you build a conversion-focused website that
+                  actually supports your business: clear structure, fast
+                  loading, mobile-friendly, and set up so people know how to
+                  contact you.
                 </p>
                 <p>
                   We work with founders and teams who want to look more
@@ -102,7 +103,7 @@ export default function About() {
 
             <div className="pt-6">
               <a
-                href="#quote"
+                href="/#quote"
                 className="btn-primary inline-flex items-center gap-2"
               >
                 Tell us about your business

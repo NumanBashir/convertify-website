@@ -1,5 +1,5 @@
 import {fallbackContent} from './fallbackContent';
-import {WebsiteContent} from '../types';
+import {BlogContentBlock, WebsiteContent} from '../types';
 import {sanityClient} from './sanity';
 
 interface SanityImage {
@@ -34,6 +34,18 @@ interface SanityWebsiteContent {
     externalImageUrl?: string;
     image?: SanityImage;
     toolsUsed?: string[];
+  }>;
+  blogPosts?: Array<{
+    _id: string;
+    title?: string;
+    slug?: {current?: string};
+    excerpt?: string;
+    mainImage?: SanityImage;
+    externalImageUrl?: string;
+    publishedAt?: string;
+    author?: string;
+    readingTime?: string;
+    content?: BlogContentBlock[];
   }>;
   testimonials?: Array<{
     _id: string;
@@ -91,6 +103,18 @@ const websiteContentQuery = `{
     image{asset->{url}},
     toolsUsed
   },
+  "blogPosts": *[_type == "blogPost"] | order(publishedAt desc, _createdAt desc){
+    _id,
+    title,
+    slug,
+    excerpt,
+    mainImage{asset->{url}},
+    externalImageUrl,
+    publishedAt,
+    author,
+    readingTime,
+    content
+  },
   "testimonials": *[_type == "testimonial"] | order(displayOrder asc, clientName asc){
     _id,
     quote,
@@ -126,6 +150,7 @@ export async function getWebsiteContent(): Promise<WebsiteContent> {
     homepage: data.homepage?.heroHeadline,
     services: data.services?.length || 0,
     caseStudies: data.caseStudies?.length || 0,
+    blogPosts: data.blogPosts?.length || 0,
     faqs: data.faqs?.length || 0,
   });
 
@@ -174,6 +199,19 @@ export async function getWebsiteContent(): Promise<WebsiteContent> {
           toolsUsed: study.toolsUsed,
         }))
       : fallbackContent.caseStudies,
+    blogPosts: data.blogPosts?.length
+      ? data.blogPosts.map((post) => ({
+          id: post._id,
+          title: post.title || 'Untitled post',
+          slug: post.slug?.current || post._id,
+          excerpt: post.excerpt || '',
+          image: post.mainImage?.asset?.url || post.externalImageUrl,
+          publishedAt: post.publishedAt,
+          author: post.author || 'Convertify',
+          readingTime: post.readingTime,
+          content: post.content?.length ? post.content : [],
+        }))
+      : fallbackContent.blogPosts,
     testimonials: data.testimonials?.length
       ? data.testimonials.map((testimonial) => ({
           id: testimonial._id,

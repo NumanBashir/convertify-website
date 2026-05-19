@@ -16,7 +16,7 @@ export const fallbackContent: WebsiteContent = {
     heroHeadline: "Your digital growth partner for a stronger online presence",
     heroHighlightedText: "that brings in more enquiries.",
     heroSupportingText:
-      "Convertify helps you put the right digital foundations in place: website strategy, hosting/setup, SEO basics, analytics, contact forms, speed, mobile optimisation, branding, and ongoing support.",
+      "Convertify combines business website design, website strategy, hosting/setup, SEO basics, analytics, contact forms, speed, mobile optimisation, branding, and ongoing support.",
     primaryCtaText: "Tell us about your business",
     secondaryCtaText: "Start with a quick review",
     trustPoints: [
@@ -37,35 +37,35 @@ export const fallbackContent: WebsiteContent = {
       id: "website-foundation",
       title: "Website Foundation",
       description:
-        "A clear, professional website structure built to help people understand, trust, and contact your business.",
+        "Business website design and website strategy built around clear messaging, trust, and enquiries from the first page.",
       icon: "Monitor",
     },
     {
       id: "visibility-seo-basics",
       title: "Visibility & SEO Basics",
       description:
-        "The essential setup for search: sensible page structure, metadata, indexing basics, and content that explains what you do.",
+        "SEO basics for your website: sensible page structure, metadata, indexing setup, and content that explains what you do.",
       icon: "Search",
     },
     {
       id: "tracking-lead-setup",
       title: "Tracking & Lead Setup",
       description:
-        "Contact forms, analytics, and tracking configured properly so enquiries are captured and you can see what is working.",
+        "Contact forms, analytics, and tracking configured properly so website enquiries are captured and you can see what is working.",
       icon: "BarChart3",
     },
     {
       id: "performance-mobile",
       title: "Performance & Mobile Experience",
       description:
-        "Fast loading, mobile-friendly pages with a conversion-focused structure that is ready for marketing.",
+        "A fast, mobile-friendly, conversion-focused website structure that is ready for future marketing.",
       icon: "Smartphone",
     },
     {
       id: "ongoing-support",
       title: "Ongoing Support",
       description:
-        "Practical help after launch, from small updates to technical fixes, so your digital presence keeps working.",
+        "Website maintenance and support after launch, from content updates to technical fixes and practical improvements.",
       icon: "LifeBuoy",
     },
   ],
@@ -99,12 +99,167 @@ export const fallbackContent: WebsiteContent = {
       title: "Local Business Concept",
       category: "Webflow / CMS",
       description:
-        "A practical digital foundation for a local business that needs to look credible and make enquiries easier.",
+        "A practical website redesign and CMS setup for a local service business that needs to look credible and make enquiries easier.",
       image:
         "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
       outcome:
         "A faster, clearer presence with easier updates, booking paths, and stronger local trust.",
       toolsUsed: ["Webflow", "CMS", "Booking"],
+    },
+  ],
+  blogPosts: [
+    {
+      id: "website-not-getting-enquiries",
+      title: "Why your website is not getting enquiries",
+      slug: "why-your-website-is-not-getting-enquiries",
+      excerpt:
+        "A practical breakdown of the common clarity, trust, mobile, and call-to-action issues that stop visitors from contacting a business.",
+      image:
+        "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop",
+      publishedAt: "2026-05-19",
+      author: "Numan Bashir",
+      readingTime: "4 min read",
+      content: [
+        {
+          _type: "block",
+          style: "normal",
+          children: [
+            {
+              text: "A website can look fine and still fail to bring in enquiries. Usually, the problem is not one single thing. It is a mix of unclear messaging, weak trust signals, slow loading, poor mobile experience, and calls-to-action that are too easy to miss.",
+            },
+          ],
+        },
+        {
+          _type: "block",
+          style: "h2",
+          children: [{ text: "Visitors need clarity quickly" }],
+        },
+        {
+          _type: "block",
+          style: "normal",
+          children: [
+            {
+              text: "People should understand what you offer, who it is for, and what to do next within the first few seconds. If the homepage does not answer those questions, visitors often leave before they reach the contact form.",
+            },
+          ],
+        },
+        {
+          _type: "block",
+          style: "h2",
+          children: [{ text: "Trust matters before design details" }],
+        },
+        {
+          _type: "block",
+          style: "normal",
+          children: [
+            {
+              text: "Reviews, case studies, clear service explanations, contact details, and professional visuals all help visitors feel safer taking the next step. A conversion-focused website makes those signals easy to find.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "digital-foundation-includes",
+      title: "What a proper digital foundation should include",
+      slug: "what-a-proper-digital-foundation-should-include",
+      excerpt:
+        "More than a homepage: the setup pieces that help a business look credible, capture leads, and prepare for future marketing.",
+      image:
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+      publishedAt: "2026-05-19",
+      author: "Numan Bashir",
+      readingTime: "5 min read",
+      content: [
+        {
+          _type: "block",
+          style: "normal",
+          children: [
+            {
+              text: "A useful website is only one part of a digital foundation. The strongest setups also include SEO basics, analytics, contact forms, hosting/setup decisions, speed, mobile optimisation, and a clear way to maintain content after launch.",
+            },
+          ],
+        },
+        {
+          _type: "block",
+          style: "h2",
+          children: [{ text: "Start with the business goal" }],
+        },
+        {
+          _type: "block",
+          style: "normal",
+          children: [
+            {
+              text: "Before choosing tools or layouts, define what the website needs to support: enquiries, bookings, trust, product education, recruitment, or future marketing. That goal should shape the structure.",
+            },
+          ],
+        },
+        {
+          _type: "block",
+          style: "h2",
+          children: [{ text: "Make the setup easy to maintain" }],
+        },
+        {
+          _type: "block",
+          style: "normal",
+          children: [
+            {
+              text: "A CMS setup, simple tracking, and a clear support plan help the website keep working after launch instead of becoming another outdated project.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "homepage-trust-signals",
+      title: "Trust signals every service website should have",
+      slug: "trust-signals-every-service-website-should-have",
+      excerpt:
+        "Simple website improvements that make a business feel more credible before a visitor sends an enquiry.",
+      image:
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=2074&auto=format&fit=crop",
+      publishedAt: "2026-05-19",
+      author: "Numan Bashir",
+      readingTime: "3 min read",
+      content: [
+        {
+          _type: "block",
+          style: "normal",
+          children: [
+            {
+              text: "Visitors are more likely to contact a business when the website removes doubt. Trust signals show that the business is real, reliable, and able to solve the visitor's problem.",
+            },
+          ],
+        },
+        {
+          _type: "block",
+          style: "h2",
+          children: [{ text: "Show proof close to the decision point" }],
+        },
+        {
+          _type: "block",
+          style: "normal",
+          children: [
+            {
+              text: "Testimonials, project examples, client names, guarantees, process details, and clear contact options should sit near the places where visitors decide whether to enquire.",
+            },
+          ],
+        },
+        {
+          _type: "block",
+          style: "h2",
+          children: [{ text: "Be specific about what happens next" }],
+        },
+        {
+          _type: "block",
+          style: "normal",
+          children: [
+            {
+              text: "A clear next step reduces hesitation. Tell visitors what happens after they submit a form, how quickly you respond, and what information they should expect to receive.",
+            },
+          ],
+        },
+      ],
     },
   ],
   testimonials: [
@@ -121,17 +276,17 @@ export const fallbackContent: WebsiteContent = {
     {
       question: "What does a digital foundation include?",
       answer:
-        "It usually includes the website structure, core pages, contact forms, basic SEO, hosting/setup guidance, analytics, speed, mobile optimisation, and a plan for ongoing support.",
+        "It usually includes website strategy, core pages, contact forms, SEO basics, hosting/setup guidance, analytics, speed, mobile optimisation, and a plan for ongoing support.",
     },
     {
       question: "Can you improve my existing website?",
       answer:
-        "Yes. We can review what you already have and improve the structure, messaging, performance, mobile experience, tracking, and enquiry paths.",
+        "Yes. We can handle website redesign work by improving the structure, messaging, performance, mobile experience, tracking, and enquiry paths.",
     },
     {
       question: "Can I update the website myself?",
       answer:
-        "Yes. When it makes sense, we set up a simple CMS so you can update key content without dealing with code.",
+        "Yes. When it makes sense, we include CMS setup so you can update key website content without dealing with code.",
     },
     {
       question: "Do you only work with local businesses?",
